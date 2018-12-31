@@ -1,0 +1,1 @@
+export const SET_COLOR_LIST = "SET_COLOR_LIST";

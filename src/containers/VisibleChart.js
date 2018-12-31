@@ -1,13 +1,13 @@
 import AbstractChart from "../components/AbstractChart";
 import {connect} from "react-redux";
+import {setColorList} from "../actions/ChartActions";
 
 const mapStateToProps = (state, ownProps) => ({
-    chartType: ownProps.chartType,
-    data: ownProps.data
+    colorList: state.colorList
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-
+    onClick: () => dispatch(setColorList(["blue"]))
 });
 
 export default connect(

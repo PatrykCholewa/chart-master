@@ -1,20 +1,24 @@
 import React from "react";
-import {Line} from "react-chartjs-2";
-import {LINE_CHART} from "../constants/ChartType"; //Used import
+import LineChart from "./LineChart";
+import {LINE_CHART} from "../constants/ChartType";
 
-const getChart = (chartType, data) => {
+const AbstractChart = ({chartType, labelList, datasets, colorList, onClick}) => {
     switch (chartType) {
         case LINE_CHART:
-            return (<Line data={data}/>);
+            return (
+                <LineChart labelList={labelList}
+                           datasets={datasets}
+                           colorList={colorList}
+                           onClick={onClick}/>
+            );
         default:
-            return (<Line data={data}/>);
+            return (
+                <LineChart labelList={labelList}
+                           datasets={datasets}
+                           colorList={colorList}
+                           onClick={onClick}/>
+            );
     }
 };
-
-const AbstractChart = ({chartType, data}) => (
-    <div className="chart">
-        {getChart(chartType,data)}
-    </div>
-);
 
 export default AbstractChart;

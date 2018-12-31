@@ -1,3 +1,6 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import {colorList} from "./ColorList";
 
-export default combineReducers({});
+export default combineReducers({
+    colorList
+});
