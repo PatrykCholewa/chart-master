@@ -8,7 +8,8 @@ class ExampleChart extends Component {
         this.state = {
             chartType: BAR_CHART,
             labelList: ["1st set"],
-            datasets: [[12, 19, 3, 5, 2, 3]]
+            xData: [1, 2, 3, 4, 5, 6],
+            yDataList: [[12, 19, 3, 5, 2, 3]]
         }
     }
 
