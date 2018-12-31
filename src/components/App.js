@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import ExampleChart from "./ExampleChart";
+import ExampleDataSheet from "./ExampleDataSheet";
 
 class App extends Component {
     render() {
         return (
-            <ExampleChart/>
+            <div>
+                <ExampleDataSheet/>
+                <ExampleChart/>
+            </div>
         );
     }
 }
