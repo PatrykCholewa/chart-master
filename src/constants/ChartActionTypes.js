@@ -1,1 +1,3 @@
 export const SET_COLOR_LIST = "SET_COLOR_LIST";
+export const ADD_COLOR = "ADD_COLOR";
+export const SET_DEFAULT_COLORS = "SET_DEFAULT_COLORS";
