@@ -10,8 +10,7 @@ const getBarList = (data, colorList) => {
     for( let i = 0 ; i < colorList.length ; i++ ) {
         html.push(<Bar dataKey={"v" + i} fill={colorList[i]} stackId="stack" />);
     }
-
-    console.log(html);
+    
     return html;
 
 };
