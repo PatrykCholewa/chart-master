@@ -6,31 +6,7 @@ class ExampleChart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            chartType: BAR_CHART,
-            dataSets:[
-                {
-                    id: 0,
-                    label: "Data 1",
-                    color: 'red',
-                    data: [
-                        {x: '1', y: '300'},
-                        {x: '3', y: '-100'},
-                        {x: '-3', y: '-8'},
-                        {x: '1.2', y: '-50'}
-                    ],
-                },
-                {
-                    id: 1,
-                    label: "Data 2",
-                    color: 'blue',
-                    data: [
-                        {x: '1', y: '456'},
-                        {x: '2', y: '230'},
-                        {x: '-3', y: '450'},
-                        {x: '3.4', y: '154'}
-                    ],
-                }
-            ]
+            chartType: BAR_CHART
         }
     }
 
