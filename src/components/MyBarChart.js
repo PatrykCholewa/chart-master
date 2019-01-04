@@ -3,17 +3,30 @@ import {BarChart, Bar, XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Lege
 
 
 class MyBarChart extends Component {
-    constructor(props){
-        super(props);
-        this.state = {...props};
+
+    getData() {
+        let xAxisDict = {};
+
+        this.props.dataSets.map( set => {
+           set.data.map( point => {
+               let xPoints = xAxisDict[point.x] === undefined ? {} : xAxisDict[point.x];
+
+               xPoints[set.label] = point.y;
+               xAxisDict[point.x] = xPoints;
+           });
+        });
+
+        return Object.keys(xAxisDict).map((x) => ({x, ...xAxisDict[x]}));
+
     }
 
     getBarList() {
         let html = [];
 
-        for( let i = 0 ; i < this.props.labelList.length ; i++ ) {
+        for( let i = 0 ; i < this.props.dataSets.length ; i++ ) {
+            const set = this.props.dataSets[i];
             html.push(
-                <Bar dataKey={"v" + i} name={this.props.labelList[i]} fill={this.props.colorList[i]} stackId="stack"/>
+                <Bar dataKey={set.label} fill={set.color} stackId="stack"/>
             );
         }
 
@@ -23,18 +36,20 @@ class MyBarChart extends Component {
 
     render () {
         return (
-            <div onClick={this.props.onClick}>
-                <BarChart width={600} height={300} data={this.state.data} stackOffset="sign"
-                          margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                    <CartesianGrid strokeDasharray="3 3"/>
-                    <XAxis type="number" dataKey="x"/>
-                    <YAxis/>
-                    <Tooltip/>
-                    <Legend verticalAlign="top" wrapperStyle={{lineHeight: '40px'}}/>
-                    <ReferenceLine y={0} stroke='#000'/>
-                    {this.getBarList()}
-                </BarChart>
-            </div>
+            <BarChart width={600}
+                      height={300}
+                      data={this.getData()}
+                      stackOffset="sign"
+                      margin={{top: 5, right: 30, left: 20, bottom: 5}}
+                      onClick={this.props.onClick}>
+                <CartesianGrid strokeDasharray="3 3"/>
+                <XAxis type="number" dataKey="x"/>
+                <YAxis/>
+                <Tooltip/>
+                <Legend verticalAlign="top" wrapperStyle={{lineHeight: '40px'}}/>
+                <ReferenceLine y={0} stroke='#000'/>
+                {this.getBarList()}
+            </BarChart>
         );
     }
 

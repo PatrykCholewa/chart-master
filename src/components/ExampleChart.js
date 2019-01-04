@@ -7,14 +7,27 @@ class ExampleChart extends Component {
         super(props);
         this.state = {
             chartType: BAR_CHART,
-            labelList: ["Data 1", "Data 2"],
-            data: [
-                {x: '1', v0: 300, v1: 456},
-                {x: '2', v1: 230},
-                {x: '3', v0: -100},
-                {x: '-3', v0: -8, v1: 450},
-                {x: '3.4', v1: 154},
-                {x: '1.2', v0: -50}
+            dataSets:[
+                {
+                    label: "Data 1",
+                    color: 'red',
+                    data: [
+                        {x: '1', y: '300'},
+                        {x: '3', y: '-100'},
+                        {x: '-3', y: '-8'},
+                        {x: '1.2', y: '-50'}
+                    ],
+                },
+                {
+                    label: "Data 2",
+                    color: 'blue',
+                    data: [
+                        {x: '1', y: '456'},
+                        {x: '2', y: '230'},
+                        {x: '-3', y: '450'},
+                        {x: '3.4', y: '154'}
+                    ],
+                }
             ]
         }
     }
