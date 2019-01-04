@@ -7,20 +7,20 @@ class ExampleChart extends Component {
         super(props);
         this.state = {
             chartType: BAR_CHART,
-            labelList: ["1st set", "2st set"],
-            xData: [1, 2, 3, 4, 5, 6],
-            yDataList: [
-                [12, 19, 3, 5, 2, 3],
-                [3, 20, -3.4, 6, 2, 5]
+            data: [
+                {x: '1', v0: 300, v1: 456},
+                {x: '2', v1: 230},
+                {x: '3', v0: -100},
+                {x: '-3', v0: -8, v1: 450},
+                {x: '3.4', v1: 154},
+                {x: '1.2', v0: -50}
             ]
         }
     }
 
     render() {
         return (
-            <div className="chart">
-                <VisibleChart {... this.state}/>
-            </div>
+            <VisibleChart {...this.state} />
         );
     }
 }
