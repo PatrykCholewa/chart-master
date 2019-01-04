@@ -1,8 +1,9 @@
-import AbstractChart from "../components/AbstractChart";
+import MyBarChart from "../components/MyBarChart";
 import {connect} from "react-redux";
 import {addColor} from "../actions/ChartActions";
 
 const mapStateToProps = (state, ownProps) => ({
+    labelList: ownProps.labelList,
     colorList: state.colorList
 });
 
@@ -13,4 +14,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(AbstractChart);
+)(MyBarChart);
