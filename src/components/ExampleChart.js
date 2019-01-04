@@ -9,6 +9,7 @@ class ExampleChart extends Component {
             chartType: BAR_CHART,
             dataSets:[
                 {
+                    id: 0,
                     label: "Data 1",
                     color: 'red',
                     data: [
@@ -19,6 +20,7 @@ class ExampleChart extends Component {
                     ],
                 },
                 {
+                    id: 1,
                     label: "Data 2",
                     color: 'blue',
                     data: [

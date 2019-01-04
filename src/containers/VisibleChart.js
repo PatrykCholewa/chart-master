@@ -1,14 +1,13 @@
 import MyBarChart from "../components/MyBarChart";
 import {connect} from "react-redux";
-import {addColor} from "../actions/ChartActions";
+import {addDataSet} from "../actions/ChartActions";
 
 const mapStateToProps = (state, ownProps) => ({
-    labelList: ownProps.labelList,
-    colorList: state.colorList
+    dataSets: state.dataSets
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onClick: () => dispatch(addColor(undefined))
+    onClick: () => dispatch(addDataSet(undefined))
 });
 
 export default connect(

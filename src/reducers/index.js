@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import {colorList} from "./ColorList";
+import {dataSets} from "./DataSets";
 
 export default combineReducers({
-    colorList
+    dataSets
 });
