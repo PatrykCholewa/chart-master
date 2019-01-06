@@ -6,8 +6,6 @@ class ExampleDataSheet extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            x: 2,
-            y: 2,
             dataXY: [['4', '3'], ['2', '1']],
             labelsX: ['LabelX1', 'labelX2'],
             labelsY: ['LabelY1', 'labelY2']
