@@ -1,6 +1,6 @@
 import MyBarChart from "../components/MyBarChart";
 import {connect} from "react-redux";
-import {addDataSet} from "../actions/ChartActions";
+import {addDataSet, setPureData} from "../actions/ChartActions";
 import {ActionCreators} from "redux-undo";
 
 const mapStateToProps = (state, ownProps) => ({
