@@ -11,7 +11,7 @@ class MyBarChart extends Component {
             set.data.forEach( point => {
                 let xPoints = xAxisDict[point.x] === undefined ? {} : xAxisDict[point.x];
 
-                xPoints[set.label] = point.y;
+                xPoints[set.index] = point.y;
                 xAxisDict[point.x] = xPoints;
             });
         });
@@ -21,7 +21,7 @@ class MyBarChart extends Component {
     }
 
     getBarList() {
-        return this.props.dataSets.map( set => (<Bar dataKey={set.label} fill={set.color} stackId="stack"/>) );
+        return this.props.dataSets.map( set => (<Bar name={set.label} dataKey={set.index} fill={set.color} stackId="stack"/>) );
     };
 
     render () {
