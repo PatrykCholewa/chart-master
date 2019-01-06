@@ -8,43 +8,46 @@ class ExampleDataSheet extends Component {
         this.state = {
             x: 2,
             y: 2,
-            dataXY: [['4','3'],['2','1']],
-            labelsX: ['LabelX1','labelX2'],
-            labelsY: ['LabelY1','labelY2']
+            dataXY: [['4', '3'], ['2', '1']],
+            labelsX: ['LabelX1', 'labelX2'],
+            labelsY: ['LabelY1', 'labelY2']
         }
     }
 
-    addYClicked(){
-        this.setState((state) => ({ y: (state.y + 1)}));
-        this.setState((state) => ({ dataXY: state.dataXY.concat([new Array(this.state.x).fill('0'),])}));
-        this.setState((state) => ({ labelsY: state.labelsY.concat('NewYLabel')}));
-        console.log("klick_Y");
-        console.log(this.state.y);
+    addYClicked() {
+        this.setState((state) => ({dataXY: state.dataXY.concat([new Array(state.dataXY[0].length).fill('0'),])}));
+        this.setState((state) => ({labelsY: state.labelsY.concat('NewYLabel')}));
     }
 
-    addXClicked(){
-        this.setState((state) => ({ x: (state.x + 1)}));
-        let arr = this.state.dataXY.forEach(row => row.push('0'));
-        //this.setState((state) => ({ dataXY: arr}));
-        this.setState((state) => ({ labelsX: state.labelsX.concat('NewXLabel')}));
-        //this.setState((state) => ({ dataXY: state.dataXY.forEach(row => row.push('0'))}));
-        console.log("klick_X");
-        console.log(this.state.x);
+    addXClicked() {
+        let arr = this.state.dataXY.slice();
+        arr.forEach(row => row.push('0'));
+        this.setState(() => ({dataXY: arr}));
+        this.setState((state) => ({labelsX: state.labelsX.concat('NewXLabel')}));
     }
 
     generateGrid() {
 
-        let grid = [ [{
+        let grid = [[{ // first row
             readOnly: true, component: (
                 <button onClick={() => console.log(this.state)}>
                     Data Import/Export
                 </button>
             ), forceComponent: true
-        }].concat(this.state.labelsX.map(val => ({value: `${val}`})),[{readOnly: true, component: (<button onClick={() => this.addXClicked()}>+</button>), forceComponent: true}])]
-        for (let i=0; i<this.state.y;i++) {
-            grid.push([{value: this.state.labelsY[i]}].concat(this.state.dataXY[i].map(val => ({value: `${val}`}))));
+        }].concat(this.state.labelsX.map(val => ({value: `${val}`})), [{
+            readOnly: true,
+            component: (<button onClick={() => this.addXClicked()}>+</button>),
+            forceComponent: true
+        }])]
+        for (let i = 0; i < this.state.dataXY.length; i++) { // new elements
+            let row_val = this.state.dataXY[i].map(val => ({value: `${val}`}));
+            grid.push([{value: this.state.labelsY[i]}].concat(row_val));
         }
-        grid.push([{  readOnly: true, component:(<button onClick={() => this.addYClicked()}>+</button>), forceComponent: true}]);
+        grid.push([{ // last row
+            readOnly: true,
+            component: (<button onClick={() => this.addYClicked()}>+</button>),
+            forceComponent: true
+        }]);
         return grid;
     }
 
@@ -56,16 +59,29 @@ class ExampleDataSheet extends Component {
                 dataRenderer={(cell) => cell.value}
                 onCellsChanged={changes => {
                     const dataXY = this.state.dataXY.map(row => [...row]);
+                    const labelsX = this.state.labelsX.slice();
+                    const labelsY = this.state.labelsY.slice();
                     changes.forEach(({cell, row, col, value}) => {
                         if (row > 0 && col > 0) {
-                            dataXY[row-1][col-1] =  value;
+                            dataXY[row - 1][col - 1] = value;
+                            console.log('UP D' + cell + ' ' + row + ' ' + col + ' ' + value);
                         }
-                        console.log(' '+ cell + ' '+ row +' '+ col +' '+ value);
+                        else if(col!==0 && row===0){
+                           labelsX[col-1] = value;
+                            console.log('UP X' + cell + ' ' + row + ' ' + col + ' ' + value);
+                        }
+                        else if(row!==0 && col===0){
+                            labelsY[row-1] = value;
+                            console.log('UP Y' + cell + ' ' + row + ' ' + col + ' ' + value);
+                        }
+                        else {
+                            console.log('ERR');
+                        }
                     });
-                    this.setState(() => ({ dataXY: dataXY}))
-                    console.log("Hello")
-                }
-                }
+                    this.setState(() => ({dataXY: dataXY}));
+                    this.setState(() => ({labelsX: labelsX}));
+                    this.setState(() => ({labelsY: labelsY}));
+                }}
             />
         );
     }
