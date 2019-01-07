@@ -1,3 +1,5 @@
+import {SET_LABEL_BY_INDEX} from "../constants/ChartActionTypes";
+
 const initialState = {
     type: "HORIZONTAL",
     dataSets: [
@@ -38,6 +40,11 @@ const initialState = {
 
 export const dataSheet = (state = initialState, action) => {
     switch(action.type) {
+        case SET_LABEL_BY_INDEX:
+            const newState = {...state};
+            newState.dataSets = state.dataSets.map( set => set );
+            newState.dataSets[action.dataSetIndex].label = action.newLabel;
+            return newState;
         default:
             return state;
     }

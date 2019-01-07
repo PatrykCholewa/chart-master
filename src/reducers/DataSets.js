@@ -1,4 +1,4 @@
-import {ADD_DATA_SET, SET_DATA_SETS, SET_PURE_DATA} from "../constants/ChartActionTypes";
+import {ADD_DATA_SET, SET_DATA_SETS, SET_LABEL_BY_INDEX, SET_PURE_DATA} from "../constants/ChartActionTypes";
 import {DEFAULT_COLOR_LIST} from "../constants/DefaultColorList";
 
 function randomData() {
@@ -15,6 +15,12 @@ function randomData() {
 
 export const dataSets = (state = [], action) => {
     switch(action.type) {
+        case SET_LABEL_BY_INDEX:
+            return state.map( (set, index) => {
+                return index === action.dataSetIndex
+                    ? {...set, label: action.newLabel}
+                    : set;
+            });
         case ADD_DATA_SET:
             const len = state.length;
             return [...state, {

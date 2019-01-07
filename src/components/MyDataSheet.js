@@ -14,25 +14,18 @@ class MyDataSheet extends Component {
         this.setState({...props});
     }
 
-    // addYClicked() {
-    //     this.setState((state) => ({dataXY: state.dataXY.concat([new Array(state.dataXY[0].length).fill('0'),])}));
-    //     this.setState((state) => ({labelsY: state.labelsY.concat('NewYLabel')}));
-    // }
-    //
-    // addXClicked() {
-    //     let arr = this.state.dataXY.slice();
-    //     arr.forEach(row => row.push('0'));
-    //     this.setState(() => ({dataXY: arr}));
-    //     this.setState((state) => ({labelsX: state.labelsX.concat('NewXLabel')}));
-    // }
-
     generateGrid() {
 
         let grid = [];
         grid.push(this.state.dataSets.map( set => ({value: set.label, colSpan: 2}) ));
 
+        // new column button
+
         grid.push([].concat(...this.state.dataSets.map( () => (
-            [{value: 'x'}, {value: 'y'}]
+            [
+                {value: 'x', readOnly: true},
+                {value: 'y', readOnly: true}
+            ]
         ))));
 
         this.state.dataSets.forEach( (set, index) => {
@@ -49,7 +42,6 @@ class MyDataSheet extends Component {
         //     forceComponent: true
         // }]);
 
-        console.log(grid);
         return grid;
     }
 
@@ -59,13 +51,11 @@ class MyDataSheet extends Component {
                 data={this.generateGrid()}
                 valueRenderer={(cell) => cell.value}
                 onCellsChanged={changes => {
-                    // const dataXY = this.state.dataXY.map(row => [...row]);
-                    // const labelsX = this.state.labelsX.slice();
-                    // const labelsY = this.state.labelsY.slice();
-                    // changes.forEach(({cell, row, col, value}) => {
-                    //     if (row > 0 && col > 0) {
-                    //         dataXY[row - 1][col - 1] = value;
-                    //     }
+                    const dataSets = this.state.dataSets;
+                    changes.forEach(({cell, row, col, value}) => {
+                        if (row === 0) {
+                            this.props.setLabelByIndex(value, col);
+                        }
                     //     else if(col!==0 && row===0){
                     //        labelsX[col-1] = value;
                     //     }
@@ -75,14 +65,15 @@ class MyDataSheet extends Component {
                     //     else {
                     //         console.log('ERR');
                     //     }
-                    // });
+                        console.log(dataSets);
+                    });
                     // this.setState(() => ({dataXY: dataXY}));
                     // this.setState(() => ({labelsX: labelsX}));
                     // this.setState(() => ({labelsY: labelsY}));
                 }}
             />
         );
-    }
+    };
 }
 
 export default MyDataSheet;
