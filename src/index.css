@@ -10,7 +10,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.data-grid .cell {
+  min-width: 5em;
+}
 .data-grid .cell.cell-invalid {
   background-color: #ffbec0;
-  border: 2px solid #691917;
 }

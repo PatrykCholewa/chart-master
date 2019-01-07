@@ -15,9 +15,11 @@ code {
 
 .data-grid {
     .cell {
+
+        min-width: 5em;
+
         &.cell-invalid {
             background-color: #ffbec0;
-            border: 2px solid #691917;
         }
     }
 }
