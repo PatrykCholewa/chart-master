@@ -28,22 +28,19 @@ class MyDataSheet extends Component {
 
     generateGrid() {
 
-        // let grid = [[{ // first row
-        //     readOnly: true, component: (
-        //         <button onClick={() => console.log(this.state)}>
-        //             Data Import/Export
-        //         </button>
-        //     ), forceComponent: true
-        // }].concat(this.state.labelsX.map(val => ({value: `${val}`})), [{
-        //     readOnly: true,
-        //     component: (<button onClick={() => this.addXClicked()}>+</button>),
-        //     forceComponent: true
-        // }])];
-
         let grid = [];
+        grid.push(this.state.dataSets.map( set => ({value: set.label, colSpan: 2}) ));
+
+        grid.push([].concat(...this.state.dataSets.map( () => (
+            [{value: 'x'}, {value: 'y'}]
+        ))));
+
         this.state.dataSets.forEach( (set, index) => {
-            let set_val = set.data.map(point => ([{value: `${point.x}`}, {value: `${point.y}`}]));
-            grid.push([{value: set.label}].concat(...set_val));
+            let set_val = set.data.map(point => ([
+                {value: `${point.x}`, className: point.valid ? "" : "cell-invalid"},
+                {value: `${point.y}`, className: point.valid ? "" : "cell-invalid"}
+                ]));
+            grid.push([].concat(...set_val));
         });
 
         // grid.push([{ // last row
@@ -52,6 +49,7 @@ class MyDataSheet extends Component {
         //     forceComponent: true
         // }]);
 
+        console.log(grid);
         return grid;
     }
 
@@ -60,7 +58,6 @@ class MyDataSheet extends Component {
             <ReactDataSheet
                 data={this.generateGrid()}
                 valueRenderer={(cell) => cell.value}
-                dataRenderer={(cell) => cell.value}
                 onCellsChanged={changes => {
                     // const dataXY = this.state.dataXY.map(row => [...row]);
                     // const labelsX = this.state.labelsX.slice();
