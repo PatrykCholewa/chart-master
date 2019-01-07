@@ -2,8 +2,8 @@ import {connect} from "react-redux";
 import MyDataSheet from "../components/MyDataSheet";
 
 const mapStateToProps = (state, ownProps) => ({
-    dataXY: state.dataSets.present.map( set => set.data.map( point => ([point.x, point.y]) )),
-    labelsY: state.dataSets.present.map( set => set.label )
+    dataSets: state.dataSheet.present.dataSets,
+    type: state.dataSheet.present.type
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
