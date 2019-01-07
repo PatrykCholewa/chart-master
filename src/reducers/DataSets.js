@@ -2,11 +2,12 @@ import {ADD_DATA_SET, SET_DATA_SETS, SET_PURE_DATA} from "../constants/ChartActi
 import {DEFAULT_COLOR_LIST} from "../constants/DefaultColorList";
 
 function randomData() {
-    const rand10 = () => Math.random() * 10;
+    const randLen = () => Math.random() * 10 % 5;
+    const randVal = () => (Math.random() * 10 - 5).toPrecision(4);
     let data = [];
 
-    for( let i = 0 ; i < rand10() % 5 ; i++ ){
-        data.push({x: rand10()-5, y: rand10()-5});
+    for( let i = 0 ; i < randLen() % 5 ; i++ ){
+        data.push({x: randVal(), y: randVal()});
     }
 
     return data;

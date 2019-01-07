@@ -2,14 +2,18 @@ import {Component} from "react";
 import React from "react";
 import ReactDataSheet from 'react-datasheet';
 
-class ExampleDataSheet extends Component {
+class MyDataSheet extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataXY: [['4', '3'], ['2', '1']],
-            labelsX: ['LabelX1', 'labelX2'],
-            labelsY: ['LabelY1', 'labelY2']
-        }
+            labelsX: ['LabelX1', 'labelX2', 'labelX3', 'labelX4', 'labelX5'],
+            ...props
+        };
+    }
+
+    componentWillReceiveProps(props, context) {
+        this.setState({...props});
+        console.log(this.state);
     }
 
     addYClicked() {
@@ -36,11 +40,11 @@ class ExampleDataSheet extends Component {
             readOnly: true,
             component: (<button onClick={() => this.addXClicked()}>+</button>),
             forceComponent: true
-        }])]
-        for (let i = 0; i < this.state.dataXY.length; i++) { // new elements
-            let row_val = this.state.dataXY[i].map(val => ({value: `${val}`}));
-            grid.push([{value: this.state.labelsY[i]}].concat(row_val));
-        }
+        }])];
+        this.state.dataXY.forEach( (row, index) => {
+            let row_val = row.map(val => ({value: `${val[0]} ; ${val[1]}`}));
+            grid.push([{value: this.state.labelsY[index]}].concat(row_val));
+        });
         grid.push([{ // last row
             readOnly: true,
             component: (<button onClick={() => this.addYClicked()}>+</button>),
@@ -85,4 +89,4 @@ class ExampleDataSheet extends Component {
     }
 }
 
-export default ExampleDataSheet;
+export default MyDataSheet;
