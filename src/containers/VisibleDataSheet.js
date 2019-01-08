@@ -4,7 +4,7 @@ import {setLabelByIndex, setNewDataByDataSetIndex} from "../actions/ChartActions
 import {deepCopyObject} from "../utils/utils";
 
 const mapStateToProps = (state, ownProps) => ({
-    dataSets: deepCopyObject(state.dataSheet.present.dataSets),
+    dataSets: deepCopyObject(state.dataSets.present),
     type: state.dataSheet.present.type
 });
 

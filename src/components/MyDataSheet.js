@@ -35,8 +35,6 @@ class MyDataSheet extends Component {
             grid.push(pointRow);
         }
 
-        console.log(grid);
-
         // grid.push([{ // last row
         //     readOnly: true,
         //     component: (<button onClick={() => this.addYClicked()}>+</button>),
