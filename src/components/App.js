@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ExampleChart from "./ExampleChart";
 import VisibleDataSheet from "../containers/VisibleDataSheet";
+import VisibleFileReaderBtn from "../containers/VisibleFileReaderBtn";
 
 class App extends Component {
     render() {
@@ -8,6 +9,7 @@ class App extends Component {
             <div>
                 <VisibleDataSheet/>
                 <ExampleChart/>
+                <VisibleFileReaderBtn/>
             </div>
         );
     }

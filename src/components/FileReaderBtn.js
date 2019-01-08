@@ -4,16 +4,6 @@ const cellSeparator = ';';
 const rowSeparator = '\n';
 
 class FileReaderBtn extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: 'title',
-            dataXY: [['4', '3'], ['2', '1']],
-            labelsX: ['LabelX1', 'labelX2'],
-            labelsY: ['LabelY1', 'labelY2']
-        }
-    }
-
 
     fileSet(e) {
         let reader = new FileReader();
@@ -25,53 +15,38 @@ class FileReaderBtn extends Component {
 
     decodeCSV(data) {
         let rows = data.split(rowSeparator);
-        console.log(rows);
+
         rows = rows.map(row => {
             return row.split(cellSeparator);
         });
-        rows.pop();
 
-        let dataXYt = [];
-        let labelsXt = [];
-        let labelsYt = [];
-        let titlet = rows[0][0];
-        labelsXt = rows[0].slice(1);
+        let readState = [];
 
-        for (let i = 1; i < rows.length; i++) {
-            let row = rows[i];
-            labelsYt[i - 1] = row.shift();
-            dataXYt[i - 1] = row.slice();
-        }
-        this.setState(() => ({dataXY: dataXYt}));
-        this.setState(() => ({title: titlet}));
-        this.setState(() => ({labelsX: labelsXt}));
-        this.setState(() => ({labelsY: labelsYt}));
-    }
-
-    encodeCSV() {
-        let file;
-        let data = [];
-        data.push(this.state.title + cellSeparator + this.state.labelsX.join(cellSeparator) + rowSeparator);
-        this.state.dataXY.forEach((row, index) => {
-            let rowStr = row.join(cellSeparator);
-            data.push(this.state.labelsY[index] + cellSeparator + rowStr + rowSeparator);
-        });
-        let properties = {type: 'text/plain'};
         try {
-            file = new File(data, "csv_download", properties);
-        } catch (e) {
-            file = new Blob(data, properties);
-        }
-        return URL.createObjectURL(file);
-    }
 
+            rows[0].forEach((label, index) => readState.push({index: index, label: label, color: "", data: []}));
+            rows[1].forEach((color, index) => {
+                readState[index].color = color
+            });
+
+
+            rows.splice(0, 2);
+
+            rows.forEach((row) => {
+                for (let j = 0; j < row.length; j += 2) {
+                    readState[j / 2].data.push({x: row[j], y: row[j + 1], valid: true})
+                }
+            });
+            this.props.setDataSets(readState);
+        } catch (TypeError) {
+            console.log("Wrong CSV format");
+        }
+
+    }
 
     render() {
         return (
-            <div>
-                <input type="file" onChange={(e) => this.fileSet(e)}/>
-                <a href={this.encodeCSV()} download="csv_download">Download</a>
-            </div>
+            <input type="file" onChange={(e) => this.fileSet(e)}/>
         );
     }
 }
