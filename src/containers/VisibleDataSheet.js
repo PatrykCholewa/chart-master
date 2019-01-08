@@ -1,9 +1,10 @@
 import {connect} from "react-redux";
 import MyDataSheet from "../components/MyDataSheet";
 import {setLabelByIndex, setNewDataByDataSetIndex} from "../actions/ChartActions";
+import {deepCopyObject} from "../utils/utils";
 
 const mapStateToProps = (state, ownProps) => ({
-    dataSets: state.dataSheet.present.dataSets,
+    dataSets: deepCopyObject(state.dataSets.present),
     type: state.dataSheet.present.type
 });
 

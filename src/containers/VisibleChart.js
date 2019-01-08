@@ -1,6 +1,5 @@
 import MyBarChart from "../components/MyBarChart";
 import {connect} from "react-redux";
-import {addDataSet} from "../actions/ChartActions";
 import {ActionCreators} from "redux-undo";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,7 +7,6 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onClick: () => dispatch(addDataSet(undefined)),
     undo: () => dispatch(ActionCreators.undo()),
     redo: () => dispatch(ActionCreators.redo())
 });

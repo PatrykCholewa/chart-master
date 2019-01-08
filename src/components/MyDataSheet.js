@@ -18,13 +18,22 @@ class MyDataSheet extends Component {
             ]
         ))));
 
-        this.props.dataSets.forEach( (set, index) => {
-            let set_val = set.data.map(point => ([
-                {value: `${point.x}`, className: point.valid ? "" : "cell-invalid"},
-                {value: `${point.y}`, className: point.valid ? "" : "cell-invalid"}
-                ]));
-            grid.push([].concat(...set_val));
-        });
+        const rowPointLength = this.props.dataSets.length;
+        const colLength = rowPointLength > 0 ? this.props.dataSets[0].data.length : 0;
+
+        for( let row = 0 ; row < rowPointLength ; row++ ){
+            let pointRow = [];
+
+            for( let col = 0 ; col < colLength ; col++ ){
+                const point = this.props.dataSets[col].data[row];
+                pointRow.push(
+                        {value: `${point.x}`, className: point.valid ? "" : "cell-invalid"},
+                        {value: `${point.y}`, className: point.valid ? "" : "cell-invalid"}
+                        );
+            }
+
+            grid.push(pointRow);
+        }
 
         // grid.push([{ // last row
         //     readOnly: true,
@@ -53,17 +62,15 @@ class MyDataSheet extends Component {
                             const dataIndex = row - 2;
                             const newData = this.props.dataSets[dataIndex].data[setIndex];
 
-                            console.log(this.props.dataSets[setIndex].data);
-
                             if( col % 2 ){
                                 newData.y = value;
                             } else {
                                 newData.x = value;
                             }
 
-                            newData.valid = !Number.isNaN(value);
+                            newData.valid = !isNaN(value);
 
-                            this.props.addNewDataByDataSetIndex({...newData}, setIndex, dataIndex);
+                            this.props.addNewDataByDataSetIndex(newData, setIndex, dataIndex);
                         }
                     });
                 }}

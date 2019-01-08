@@ -33,8 +33,7 @@ class MyBarChart extends Component {
                           height={300}
                           data={this.getData()}
                           stackOffset="sign"
-                          margin={{top: 5, right: 30, left: 20, bottom: 5}}
-                          onClick={this.props.onClick}>
+                          margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                     <CartesianGrid strokeDasharray="3 3"/>
                     <XAxis type="number" dataKey="x"/>
                     <YAxis/>
