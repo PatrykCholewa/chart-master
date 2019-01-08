@@ -1,4 +1,4 @@
-import {SET_LABEL_BY_INDEX} from "../constants/ChartActionTypes";
+import {SET_NEW_DATA_BY_DATA_SET_INDEX, SET_LABEL_BY_INDEX} from "../constants/ChartActionTypes";
 
 const initialState = {
     type: "HORIZONTAL",
@@ -29,9 +29,9 @@ const initialState = {
                     valid: true
                 },
                 {
-                    x: "INVALID",
+                    x: "3",
                     y: "3",
-                    valid: false
+                    valid: true
                 }
             ]
         }
@@ -39,11 +39,22 @@ const initialState = {
 };
 
 export const dataSheet = (state = initialState, action) => {
+    const newState = {...state};
     switch(action.type) {
         case SET_LABEL_BY_INDEX:
-            const newState = {...state};
             newState.dataSets = state.dataSets.map( set => set );
             newState.dataSets[action.dataSetIndex].label = action.newLabel;
+            return newState;
+        case SET_NEW_DATA_BY_DATA_SET_INDEX:
+            newState.dataSets = state.dataSets.map( (set, index) => {
+                if( index !== action.dataSetIndex ){
+                    return set;
+                }
+
+                return {...set, data: set.data.map( (point, index) => {
+                        return index === action.dataIndex ? action.newData : point;
+                })};
+            });
             return newState;
         default:
             return state;

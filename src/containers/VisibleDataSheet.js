@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import MyDataSheet from "../components/MyDataSheet";
-import {setLabelByIndex} from "../actions/ChartActions";
+import {setLabelByIndex, setNewDataByDataSetIndex} from "../actions/ChartActions";
 
 const mapStateToProps = (state, ownProps) => ({
     dataSets: state.dataSheet.present.dataSets,
@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    setLabelByIndex: (newLabel, dataSetIndex) => dispatch(setLabelByIndex(newLabel, dataSetIndex))
+    setLabelByIndex: (newLabel, dataSetIndex) => dispatch(setLabelByIndex(newLabel, dataSetIndex)),
+    addNewDataByDataSetIndex: (newData, dataSetIndex, dataIndex) => dispatch(setNewDataByDataSetIndex(newData, dataSetIndex, dataIndex))
 });
 
 export default connect(
