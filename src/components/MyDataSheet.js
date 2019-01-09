@@ -43,8 +43,8 @@ class MyDataSheet extends Component {
             ]
         ))));
 
-        const rowPointLength = this.props.dataSets.length;
-        const colLength = rowPointLength > 0 ? this.props.dataSets[0].data.length : 0;
+        const colLength =  this.props.dataSets.length;
+        const rowPointLength = colLength > 0 ? this.props.dataSets[0].data.length : 0;
 
         for( let row = 0 ; row < rowPointLength ; row++ ){
             let pointRow = [];
