@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {cellSeparator, rowSeparator} from "../constants/CsvSeparators";
+import Button from "@material-ui/core/Button";
 
 class FileReaderBtn extends Component {
     constructor(props) {
@@ -25,6 +26,8 @@ class FileReaderBtn extends Component {
         rows = rows.map(row => {
             return row.split(cellSeparator);
         });
+
+        rows.pop();
 
         let readState = [];
 
@@ -52,7 +55,7 @@ class FileReaderBtn extends Component {
                 <label>
                     <input type="file" ref={this.fileInput}/>
                 </label>
-                <button type="submit" onClick={e => this.onSubmit()}>Read CSV</button>
+                <Button variant="contained" color="default" type="submit" onClick={e => this.onSubmit()}>Read CSV</Button>
             </div>
         );
     }

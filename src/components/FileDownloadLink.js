@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {cellSeparator, rowSeparator} from "../constants/CsvSeparators";
+import Button from "@material-ui/core/Button";
 
 class FileDownloadLink extends Component {
 
@@ -39,7 +40,7 @@ class FileDownloadLink extends Component {
 
     render() {
         return (
-            <a href={this.encodeCSV()} download="csv_download">CSV Download</a>
+            <a href={this.encodeCSV()} download="csv_file"><Button variant="contained" color="default">Download</Button></a>
         );
     }
 }
