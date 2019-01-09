@@ -1,7 +1,5 @@
 import React, {Component} from "react";
-
-const cellSeparator = ',';
-const rowSeparator = '\n';
+import {cellSeparator, rowSeparator} from "../constants/CsvSeparators";
 
 class FileReaderBtn extends Component {
     constructor(props) {
@@ -52,9 +50,9 @@ class FileReaderBtn extends Component {
         return (
             <div>
                 <label>
-                    <input type="file" ref={this.fileInput} />
+                    <input type="file" ref={this.fileInput}/>
                 </label>
-                <button type="submit" onClick={e=>this.onSubmit()}>Read CSV</button>
+                <button type="submit" onClick={e => this.onSubmit()}>Read CSV</button>
             </div>
         );
     }
