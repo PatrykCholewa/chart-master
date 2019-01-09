@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {BarChart, Bar, XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Legend} from "recharts";
+import Button from "@material-ui/core/Button/Button";
 
 
 class MyBarChart extends Component {
@@ -27,8 +28,8 @@ class MyBarChart extends Component {
     render () {
         return (
             <div>
-                <input type="button" onClick={this.props.undo} value="Undo"/>
-                <input type="button" onClick={this.props.redo} value="Redo"/>
+                <Button variant="contained" color="default" onClick={this.props.undo}>Undo</Button>
+                <Button variant="contained" color="default" onClick={this.props.redo}>Redo</Button>
                 <BarChart width={600}
                           height={300}
                           data={this.getData()}
