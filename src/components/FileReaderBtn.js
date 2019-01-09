@@ -4,12 +4,20 @@ const cellSeparator = ';';
 const rowSeparator = '\n';
 
 class FileReaderBtn extends Component {
+    constructor(props) {
+        super(props);
+        this.fileInput = React.createRef();
+    }
 
-    fileSet(e) {
+    onSubmit() {
         let reader = new FileReader();
-        reader.readAsText(e.target.files[0]);
-        reader.onload = (e) => {
-            this.decodeCSV(e.target.result);
+        try {
+            reader.readAsText(this.fileInput.current.files[0]);
+            reader.onload = (e) => {
+                this.decodeCSV(e.target.result);
+            }
+        } catch (TypeError) {
+            console.error(TypeError.toString());
         }
     }
 
@@ -39,14 +47,19 @@ class FileReaderBtn extends Component {
             });
             this.props.setDataSets(readState);
         } catch (TypeError) {
-            console.log("Wrong CSV format");
+            console.error("Wrong CSV format");
         }
 
     }
 
     render() {
         return (
-            <input type="file" onChange={(e) => this.fileSet(e)}/>
+            <div>
+                <label>
+                    <input type="file" ref={this.fileInput} />
+                </label>
+                <button type="submit" onClick={e=>this.onSubmit()}>Read CSV</button>
+            </div>
         );
     }
 }
