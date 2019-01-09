@@ -1,13 +1,13 @@
 import {connect} from "react-redux";
 import FileReaderBtn from "../components/FileReaderBtn";
-import {setDataSets} from "../actions/ChartActions";
+import {setPureData} from "../actions/ChartActions";
 
 const mapStateToProps = (state, ownProps) => ({
     dataSets: state.dataSheet.present.dataSets
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    setDataSets: (dataSet) => dispatch(setDataSets(dataSet)),
+    setPureData: (dataSet) => dispatch(setPureData(dataSet)),
 });
 
 export default connect(
