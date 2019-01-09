@@ -4,10 +4,35 @@ import ReactDataSheet from 'react-datasheet';
 
 class MyDataSheet extends Component {
 
+    onCellsChanged(changes) {
+        changes.forEach(({cell, row, col, value}) => {
+            if (row === 0) {
+                this.props.setLabelByIndex(value, col);
+            } else if (row === 1) {
+                console.log('CAN"T EDIT XY ROW');
+            } else {
+                const setIndex = Math.floor(col / 2);
+                const dataIndex = row - 2;
+                const newData = this.props.dataSets[setIndex].data[dataIndex];
+
+                if (col % 2) {
+                    newData.y = value;
+                } else {
+                    newData.x = value;
+                }
+
+                newData.valid = !isNaN(value);
+
+                this.props.addNewDataByDataSetIndex(newData, setIndex, dataIndex);
+            }
+        });
+    }
+
     generateGrid() {
 
-        let grid = [];
-        grid.push(this.props.dataSets.map( set => ({value: set.label, colSpan: 2}) ));
+        let grid = [
+            this.props.dataSets.map( set => ({value: set.label, colSpan: 2}) )
+        ];
 
         // new column button
 
@@ -49,31 +74,7 @@ class MyDataSheet extends Component {
             <ReactDataSheet
                 data={this.generateGrid()}
                 valueRenderer={(cell) => cell.value}
-                onCellsChanged={changes => {
-                    changes.forEach(({cell, row, col, value}) => {
-                        if (row === 0) {
-                            this.props.setLabelByIndex(value, col);
-                        }
-                        else if(row === 1){
-                            console.log('CAN"T EDIT XY ROW');
-                        }
-                        else {
-                            const setIndex = Math.floor(col / 2);
-                            const dataIndex = row - 2;
-                            const newData = this.props.dataSets[dataIndex].data[setIndex];
-
-                            if( col % 2 ){
-                                newData.y = value;
-                            } else {
-                                newData.x = value;
-                            }
-
-                            newData.valid = !isNaN(value);
-
-                            this.props.addNewDataByDataSetIndex(newData, setIndex, dataIndex);
-                        }
-                    });
-                }}
+                onCellsChanged={changes => this.onCellsChanged(changes)}
             />
         );
     };

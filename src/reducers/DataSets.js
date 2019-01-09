@@ -6,6 +6,7 @@ import {
     SET_PURE_DATA
 } from "../constants/ChartActionTypes";
 import {DEFAULT_COLOR_LIST} from "../constants/DefaultColorList";
+import {deepCopyObject} from "../utils/utils";
 
 const initialState = [
     {
@@ -45,25 +46,14 @@ const initialState = [
 ];
 
 export const dataSets = (state = initialState, action) => {
+    let newState = deepCopyObject(state);
     switch(action.type) {
         case SET_LABEL_BY_INDEX:
-            return state.map( (set, index) => {
-                return index === action.dataSetIndex
-                    ? {...set, label: action.newLabel}
-                    : set;
-            });
+            newState[action.dataSetIndex].label = action.newLabel;
+            return newState;
         case SET_NEW_DATA_BY_DATA_SET_INDEX:
-            return !action.newData.valid
-                ? state
-                : state.map( (set, index) => {
-                    if( index !== action.dataSetIndex ){
-                       return set;
-                    }
-
-                    return {...set, data: set.data.map( (point, index) => {
-                            return index === action.dataIndex ? action.newData : point;
-                    })};
-            });
+            newState[action.dataSetIndex].data[action.dataIndex] = deepCopyObject(action.newData);
+            return newState;
         case SET_DATA_SETS:
             return action.dataSets;
         case SET_PURE_DATA:
