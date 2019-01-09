@@ -10,12 +10,9 @@ class MyBarChart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: props.chartParams.title
+            title: props.chartParams.title,
+            isTitleBeingChanged: false
         }
-    }
-
-    componentWillReceiveProps(props, context){
-        this.setState({title: props.chartParams.title})
     }
 
     getData() {
@@ -38,19 +35,38 @@ class MyBarChart extends Component {
         return this.props.dataSets.map( set => (<Bar name={set.label} dataKey={set.index} fill={set.color} stackId="stack"/>) );
     };
 
+    handleTitleChanged(event){
+        this.props.setTitle(this.state.title);
+        this.setState({
+            isTitleBeingChanged: false
+        });
+    }
+
+    getTitleDomPart(){
+        return this.state.isTitleBeingChanged
+            ? (
+                <FormControl>
+                    <Input autoFocus={true}
+                           value={this.state.title}
+                           onChange={event => this.setState({title: event.target.value})}
+                           onBlur={event => this.handleTitleChanged(event)}/>
+                </FormControl>
+            ) : (
+                <Typography align="center"
+                            variant="title"
+                            onClick={() => this.setState({isTitleBeingChanged: true})}>
+                    {this.props.chartParams.title}
+                </Typography>
+            );
+    }
+
     render () {
         return (
             <div>
                 <Button variant="contained" color="default" onClick={this.props.undo}>Undo</Button>
                 <Button variant="contained" color="default" onClick={this.props.redo}>Redo</Button>
                 <div align="center">
-                    <FormControl>
-                        <Input autoFocus={true}
-                               value={this.state.title}
-                               onChange={event=>this.setState({title: event.target.value})}
-                               onBlur={event=>this.props.setTitle(this.state.title)}/>
-                    </FormControl>
-                    <Typography align="center" variant="title">{this.props.chartParams.title}</Typography>
+                    {this.getTitleDomPart()}
                     <BarChart width={600}
                               height={300}
                               data={this.getData()}
