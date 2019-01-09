@@ -55,7 +55,7 @@ class FileReaderBtn extends Component {
                 <label>
                     <input type="file" ref={this.fileInput}/>
                 </label>
-                <Button variant="contained" color="default" type="submit" onClick={e => this.onSubmit()}>Read CSV</Button>
+                <Button variant="contained" color="default" type="submit" onClick={e => this.onSubmit()}>Import Data</Button>
             </div>
         );
     }

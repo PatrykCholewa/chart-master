@@ -40,7 +40,7 @@ class FileDownloadLink extends Component {
 
     render() {
         return (
-            <a href={this.encodeCSV()} download="csv_file"><Button variant="contained" color="default">Download</Button></a>
+            <a href={this.encodeCSV()} download="csv_file"><Button variant="contained" color="default">Export Data</Button></a>
         );
     }
 }
