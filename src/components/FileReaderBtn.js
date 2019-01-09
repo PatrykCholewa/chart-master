@@ -6,13 +6,15 @@ class FileReaderBtn extends Component {
     constructor(props) {
         super(props);
         this.fileInput = React.createRef();
+        this.state = {resetKey: ""};
     }
 
-    onSubmit() {
+    onSubmit(event) {
         let reader = new FileReader();
         try {
             reader.readAsText(this.fileInput.current.files[0]);
             reader.onload = (e) => {
+                this.setState({resetKey: this.state.resetKey + "R"});
                 this.decodeCSV(e.target.result);
             }
         } catch (TypeError) {
@@ -51,11 +53,18 @@ class FileReaderBtn extends Component {
 
     render() {
         return (
-            <div>
-                <label>
-                    <input type="file" ref={this.fileInput}/>
+            <div className="file-input-button">
+                <input
+                    accept="text/csv"
+                    id="contained-button-file"
+                    key={this.state.resetKey || ''}
+                    onChange={e => this.onSubmit(e)}
+                    ref={this.fileInput}
+                    type="file"
+                />
+                <label htmlFor="contained-button-file">
+                    <Button variant="contained" component="span" color="default">Import Data</Button>
                 </label>
-                <Button variant="contained" color="default" type="submit" onClick={e => this.onSubmit()}>Import Data</Button>
             </div>
         );
     }
