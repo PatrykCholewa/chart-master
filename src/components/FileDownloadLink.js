@@ -1,28 +1,35 @@
 import React, {Component} from "react";
-
-const cellSeparator = ';';
-const rowSeparator = '\n';
+import {cellSeparator, rowSeparator} from "../constants/CsvSeparators";
+import Button from "@material-ui/core/Button";
 
 class FileDownloadLink extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: 'title',
-            dataXY: [['4', '3'], ['2', '1']],
-            labelsX: ['LabelX1', 'labelX2'],
-            labelsY: ['LabelY1', 'labelY2']
-        }
-    }
 
     encodeCSV() {
-        let file;
+
         let data = [];
-        data.push(this.state.title + cellSeparator + this.state.labelsX.join(cellSeparator) + rowSeparator);
-        this.state.dataXY.forEach((row, index) => {
-            let rowStr = row.join(cellSeparator);
-            data.push(this.state.labelsY[index] + cellSeparator + rowStr + rowSeparator);
+        let line = [];
+        this.props.dataSets.forEach(() => {
+            line.push('x');
+            line.push('y')
         });
+
+        line.join(cellSeparator);
+        data.push(line);
+        data.push(rowSeparator);
+
+        this.props.dataSets.forEach((dataset) => {
+            let row = [];
+            dataset.data.forEach((cell) => {
+                row.push(cell.x);
+                row.push(cell.y);
+            });
+            row.join(cellSeparator);
+            data.push(row);
+            data.push(rowSeparator);
+        });
+
         let properties = {type: 'text/plain'};
+        let file;
         try {
             file = new File(data, "csv_download", properties);
         } catch (e) {
@@ -31,10 +38,9 @@ class FileDownloadLink extends Component {
         return URL.createObjectURL(file);
     }
 
-
     render() {
         return (
-                <a href={this.encodeCSV()} download="csv_download">Download</a>
+            <a href={this.encodeCSV()} download="csv_file"><Button variant="contained" color="default">Export Data</Button></a>
         );
     }
 }
