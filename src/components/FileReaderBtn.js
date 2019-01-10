@@ -39,7 +39,7 @@ class FileReaderBtn extends Component {
             rows.forEach((row) => {
                 let rowPoints = [];
                 for (let col = 0; col < row.length; col += 2) {
-                    rowPoints.push({x: row[col], y: row[col + 1], valid: true})
+                    rowPoints.push({x: row[col], y: row[col + 1], valid: (!(isNaN(row[col]) || isNaN(row[col + 1])))})
                 }
                 readState.push(rowPoints);
             });
