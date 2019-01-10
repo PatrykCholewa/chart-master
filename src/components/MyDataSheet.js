@@ -8,6 +8,15 @@ import {isPointValid} from "../utils/utils";
 
 const nonDataRows = 3;
 
+class MyAddEmptyDataButton extends Component {
+    render() {
+        return (
+        <Typography align="center" variant="display1" onClick={()=>this.props.onClick()}>
+            <MdAddCircleOutline />
+        </Typography>
+    )};
+}
+
 class MyDataSheet extends Component {
 
     onCellsChanged(changes) {
@@ -94,30 +103,16 @@ class MyDataSheet extends Component {
         //ADD COLUMN BUTTON COLUMN
         grid[0].push({
             className: "cell-add-button",
-            component: (
-                    <Typography align="center"
-                                onClick={()=>this.props.addNewEmptyDataSet()}
-                                variant="display1">
-                        <MdAddCircleOutline />
-                    </Typography>
-            ),
-            onClick: ()=>{console.log("LOG")},
+            component: (<MyAddEmptyDataButton onClick={()=>this.props.addNewEmptyDataSet()}/>),
             forceComponent: true,
             readOnly: true,
             rowSpan: rowPointLength + nonDataRows
         });
-
+        
         //ADD ROW BUTTON ROW
         grid.push([{
             className: "cell-add-button",
-            component: (
-                <Typography align="center"
-                            onClick={()=>this.props.addNewEmptyDataToEverySet()}
-                            variant="display1">
-                    <MdAddCircleOutline />
-                </Typography>
-            ),
-            onClick: ()=>{console.log("LOG")},
+            component: (<MyAddEmptyDataButton onClick={()=>this.props.addNewEmptyDataToEverySet()} />),
             forceComponent: true,
             readOnly: true,
             colSpan: 2 * colPointLength
