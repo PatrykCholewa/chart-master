@@ -36,3 +36,9 @@ a {
 .data-grid .cell.cell-invalid {
   background-color: #ffbec0;
 }
+
+.example-chart-paper {
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
+}

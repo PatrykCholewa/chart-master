@@ -3,8 +3,6 @@ import {BarChart, Bar, XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Lege
 import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
-import VisibleUndoButton from "../containers/VisibleUndoButton";
-import VisibleRedoButton from "../containers/VisibleRedoButton";
 import {isPointRenderable} from "../utils/utils";
 
 
@@ -67,8 +65,6 @@ class MyBarChart extends Component {
     render () {
         return (
             <div>
-                <VisibleUndoButton variant="contained" color="default">UNDO</VisibleUndoButton>
-                <VisibleRedoButton variant="contained" color="default">REDO</VisibleRedoButton>
                 <div align="center">
                     {this.getTitleDomPart()}
                     <BarChart width={600}

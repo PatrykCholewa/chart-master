@@ -108,7 +108,7 @@ class MyDataSheet extends Component {
             readOnly: true,
             rowSpan: rowPointLength + nonDataRows
         });
-        
+
         //ADD ROW BUTTON ROW
         grid.push([{
             className: "cell-add-button",
