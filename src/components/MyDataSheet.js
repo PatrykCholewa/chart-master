@@ -41,7 +41,6 @@ class MyDataSheet extends Component {
             this.props.dataSets.map( set => (
                 {
                     component: (<Input type="color"
-                                       defaultValue={set.color}
                                        value={set.color}
                                        fullWidth={true}
                                        onChange={ event=>this.props.setColorByIndex(event.target.value, set.index)}/>),
