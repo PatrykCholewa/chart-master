@@ -1,7 +1,7 @@
 import {
     SET_NEW_DATA_BY_DATA_SET_INDEX,
     SET_LABEL_BY_INDEX,
-    SET_PURE_DATA, SET_COLOR_BY_INDEX, ADD_NEW_EMPTY_DATA_SET
+    SET_PURE_DATA, SET_COLOR_BY_INDEX, ADD_NEW_EMPTY_DATA_SET, ADD_NEW_EMPTY_DATA_TO_EVERY_SET
 } from "../constants/ChartActionTypes";
 import {DEFAULT_COLOR_LIST} from "../constants/DefaultColorList";
 import {deepCopyObject} from "../utils/utils";
@@ -67,6 +67,14 @@ export const dataSets = (state = initialState, action) => {
                 color: DEFAULT_COLOR_LIST[newIndex],
                 data: newData
             });
+            return newState;
+        case ADD_NEW_EMPTY_DATA_TO_EVERY_SET:
+            const newDataPrototype = {
+                    x: "",
+                    y: "",
+                    valid: true
+            };
+            newState.forEach( set => set.data.push(deepCopyObject(newDataPrototype)) );
             return newState;
         case SET_NEW_DATA_BY_DATA_SET_INDEX:
             newState[action.dataSetIndex].data[action.dataIndex] = deepCopyObject(action.newData);
