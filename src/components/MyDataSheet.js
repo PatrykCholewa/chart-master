@@ -13,7 +13,7 @@ class MyDataSheet extends Component {
                 console.log('CAN"T EDIT XY ROW');
             } else {
                 const setIndex = Math.floor(col / 2);
-                const dataIndex = row - 2;
+                const dataIndex = row - 3;
                 const newData = this.props.dataSets[setIndex].data[dataIndex];
 
                 if (col % 2) {
