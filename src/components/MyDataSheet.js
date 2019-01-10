@@ -1,6 +1,8 @@
 import {Component} from "react";
 import React from "react";
 import ReactDataSheet from 'react-datasheet';
+import TextField from "@material-ui/core/TextField/TextField";
+import Input from "@material-ui/core/Input/Input";
 
 class MyDataSheet extends Component {
 
@@ -31,7 +33,22 @@ class MyDataSheet extends Component {
     generateGrid() {
 
         let grid = [
-            this.props.dataSets.map( set => ({value: set.label, colSpan: 2}) )
+            this.props.dataSets.map( set => (
+                {
+                    component: (<Input type="color"
+                                       value="#44555"
+                                       defaultValue="#445555"
+                                       onChange={ event=>this.props.setColorByIndex(event.target.value, set)}/>),
+                    forceComponent: true,
+                    readOnly: true,
+                    colSpan: 2
+                })),
+            this.props.dataSets.map( set => (
+                {
+                    value: set.label,
+                    className: "cell-label",
+                    colSpan: 2
+                }))
         ];
 
         // new column button

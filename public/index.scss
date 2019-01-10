@@ -24,6 +24,12 @@ a {
     .cell {
         min-width: 5em;
 
+        &.cell-label {
+            .value-viewer {
+                text-align: center;
+            }
+        }
+
         &.cell-invalid {
             background-color: #ffbec0;
         }

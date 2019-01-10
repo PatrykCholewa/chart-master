@@ -3,7 +3,7 @@ import {
     SET_NEW_DATA_BY_DATA_SET_INDEX,
     SET_DATA_SETS,
     SET_LABEL_BY_INDEX,
-    SET_PURE_DATA, SET_CHART_TITLE
+    SET_PURE_DATA, SET_CHART_TITLE, SET_COLOR_BY_INDEX
 } from "../constants/ChartActionTypes";
 
 export const  addDataSet = (newDataSet) => ({
@@ -37,4 +37,10 @@ export const setNewDataByDataSetIndex = (newData, dataSetIndex, dataIndex) => ({
 export const setChartTitle = newTitle => ({
     type: SET_CHART_TITLE,
     newTitle
+});
+
+export const setColorByIndex = (newColor, dataSetIndex) => ({
+    type: SET_COLOR_BY_INDEX,
+    newColor,
+    dataSetIndex
 });

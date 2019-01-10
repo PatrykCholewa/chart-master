@@ -21,6 +21,9 @@ a {
 .data-grid .cell {
   min-width: 5em;
 }
+.data-grid .cell.cell-label .value-viewer {
+  text-align: center;
+}
 .data-grid .cell.cell-invalid {
   background-color: #ffbec0;
 }

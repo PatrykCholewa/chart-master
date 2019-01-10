@@ -3,7 +3,7 @@ import {
     SET_NEW_DATA_BY_DATA_SET_INDEX,
     SET_DATA_SETS,
     SET_LABEL_BY_INDEX,
-    SET_PURE_DATA
+    SET_PURE_DATA, SET_COLOR_BY_INDEX
 } from "../constants/ChartActionTypes";
 import {DEFAULT_COLOR_LIST} from "../constants/DefaultColorList";
 import {deepCopyObject} from "../utils/utils";
@@ -50,6 +50,9 @@ export const dataSets = (state = initialState, action) => {
     switch(action.type) {
         case SET_LABEL_BY_INDEX:
             newState[action.dataSetIndex].label = action.newLabel;
+            return newState;
+        case SET_COLOR_BY_INDEX:
+            newState[action.dataSetIndex].color = action.newColor;
             return newState;
         case SET_NEW_DATA_BY_DATA_SET_INDEX:
             newState[action.dataSetIndex].data[action.dataIndex] = deepCopyObject(action.newData);
