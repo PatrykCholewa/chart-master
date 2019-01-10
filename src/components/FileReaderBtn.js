@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {cellSeparator, rowSeparator} from "../constants/CsvSeparators";
 import Button from "@material-ui/core/Button";
+import {isPointValid} from "../utils/utils";
 
 class FileReaderBtn extends Component {
     constructor(props) {
@@ -39,7 +40,9 @@ class FileReaderBtn extends Component {
             rows.forEach((row) => {
                 let rowPoints = [];
                 for (let col = 0; col < row.length; col += 2) {
-                    rowPoints.push({x: row[col], y: row[col + 1], valid: (!(isNaN(row[col]) || isNaN(row[col + 1])))})
+                    const newPoint = {x: row[col], y: row[col + 1]};
+                    newPoint.valid = isPointValid(newPoint);
+                    rowPoints.push(newPoint);
                 }
                 readState.push(rowPoints);
             });

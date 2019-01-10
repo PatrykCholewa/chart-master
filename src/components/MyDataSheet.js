@@ -94,11 +94,13 @@ class MyDataSheet extends Component {
         grid[0].push({
             className: "cell-add-button",
             component: (
-                <Typography align="center"
-                            variant="display1">
-                    <MdAddCircleOutline />
-                </Typography>
+                    <Typography align="center"
+                                onClick={()=>this.props.addNewEmptyDataSet()}
+                                variant="display1">
+                        <MdAddCircleOutline />
+                    </Typography>
             ),
+            onClick: ()=>{console.log("LOG")},
             forceComponent: true,
             readOnly: true,
             rowSpan: rowPointLength + nonDataRows

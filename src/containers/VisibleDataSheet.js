@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import MyDataSheet from "../components/MyDataSheet";
-import {setColorByIndex, setLabelByIndex, setNewDataByDataSetIndex} from "../actions/ChartActions";
+import {addNewEmptyDataSet, setColorByIndex, setLabelByIndex, setNewDataByDataSetIndex} from "../actions/ChartActions";
 import {deepCopyObject} from "../utils/utils";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
     setLabelByIndex: (newLabel, dataSetIndex) => dispatch(setLabelByIndex(newLabel, dataSetIndex)),
     setColorByIndex: (newColor, dataSetIndex) => dispatch(setColorByIndex(newColor, dataSetIndex)),
+    addNewEmptyDataSet: () => dispatch(addNewEmptyDataSet()),
     addNewDataByDataSetIndex: (newData, dataSetIndex, dataIndex) => dispatch(setNewDataByDataSetIndex(newData, dataSetIndex, dataIndex))
 });
 
