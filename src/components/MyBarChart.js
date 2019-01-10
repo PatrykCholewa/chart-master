@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import {BarChart, Bar, XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Legend} from "recharts";
-import Button from "@material-ui/core/Button/Button";
 import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
+import VisibleUndoButton from "../containers/VisibleUndoButton";
+import VisibleRedoButton from "../containers/VisibleRedoButton";
 
 
 class MyBarChart extends Component {
@@ -63,8 +64,8 @@ class MyBarChart extends Component {
     render () {
         return (
             <div>
-                <Button variant="contained" color="default" onClick={this.props.undo}>Undo</Button>
-                <Button variant="contained" color="default" onClick={this.props.redo}>Redo</Button>
+                <VisibleUndoButton variant="contained" color="default">UNDO</VisibleUndoButton>
+                <VisibleRedoButton variant="contained" color="default">Redo</VisibleRedoButton>
                 <div align="center">
                     {this.getTitleDomPart()}
                     <BarChart width={600}
