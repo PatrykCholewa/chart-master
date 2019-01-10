@@ -12,7 +12,7 @@ const initialState = [
     {
         index: 0,
         label: "SET 0",
-        color: "red",
+        color: DEFAULT_COLOR_LIST[0],
         data: [
             {
                 x: "1",
@@ -29,7 +29,7 @@ const initialState = [
     {
         index: 1,
         label: "SET 1",
-        color: "blue",
+        color: DEFAULT_COLOR_LIST[1],
         data: [
             {
                 x: "0",
