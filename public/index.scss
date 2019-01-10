@@ -22,11 +22,22 @@ a {
 
 .data-grid {
     .cell {
+        position: relative;
         min-width: 5em;
 
         &.cell-label {
             .value-viewer {
                 text-align: center;
+            }
+        }
+
+        &.cell-add-button {
+            vertical-align: middle;
+
+            .value-viewer {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
             }
         }
 

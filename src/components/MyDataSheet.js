@@ -2,6 +2,10 @@ import {Component} from "react";
 import React from "react";
 import ReactDataSheet from 'react-datasheet';
 import Input from "@material-ui/core/Input/Input";
+import {MdAddCircleOutline} from "react-icons/md";
+import Typography from "@material-ui/core/Typography/Typography";
+
+const nonDataRows = 3;
 
 class MyDataSheet extends Component {
 
@@ -31,6 +35,10 @@ class MyDataSheet extends Component {
 
     generateGrid() {
 
+        const colPointLength =  this.props.dataSets.length;
+        const rowPointLength = colPointLength > 0 ? this.props.dataSets[0].data.length : 0;
+
+        //LABEL ROW
         let grid = [
             this.props.dataSets.map( set => (
                 {
@@ -38,6 +46,14 @@ class MyDataSheet extends Component {
                     className: "cell-label",
                     colSpan: 2
                 })),
+        ];
+
+        if( rowPointLength === 0 ) {
+            grid = [[]];
+        }
+
+        //COLOR ROW
+        grid.push(
             this.props.dataSets.map( set => (
                 {
                     component: (<Input type="color"
@@ -48,11 +64,11 @@ class MyDataSheet extends Component {
                     forceComponent: true,
                     readOnly: true,
                     colSpan: 2
-                }))
-        ];
+                })
+            )
+        );
 
-        // new column button
-
+        //XY ROW
         grid.push([].concat(...this.props.dataSets.map( () => (
             [
                 {value: 'x', readOnly: true},
@@ -60,13 +76,11 @@ class MyDataSheet extends Component {
             ]
         ))));
 
-        const colLength =  this.props.dataSets.length;
-        const rowPointLength = colLength > 0 ? this.props.dataSets[0].data.length : 0;
-
+        //DATA
         for( let row = 0 ; row < rowPointLength ; row++ ){
             let pointRow = [];
 
-            for( let col = 0 ; col < colLength ; col++ ){
+            for( let col = 0 ; col < colPointLength ; col++ ){
                 const point = this.props.dataSets[col].data[row];
                 pointRow.push(
                         {value: `${point.x}`, className: point.valid ? "" : "cell-invalid"},
@@ -76,6 +90,20 @@ class MyDataSheet extends Component {
 
             grid.push(pointRow);
         }
+
+        //ADD COLUMN BUTTON COLUMN
+        grid[0].push({
+            className: "cell-add-button",
+            component: (
+                <Typography align="center"
+                            variant="display1">
+                    <MdAddCircleOutline />
+                </Typography>
+            ),
+            forceComponent: true,
+            readOnly: true,
+            rowSpan: rowPointLength + nonDataRows
+        });
 
         // grid.push([{ // last row
         //     readOnly: true,
