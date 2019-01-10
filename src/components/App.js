@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import ExampleChart from "./ExampleChart";
 import VisibleDataSheet from "../containers/VisibleDataSheet";
 import VisibleFileReaderBtn from "../containers/VisibleFileReaderBtn";
 import VisibleFileDownloadLink from "../containers/VisibleFileDownloadLink";
+import VisibleChart from "../containers/VisibleChart";
 
 class App extends Component {
     render() {
         return (
             <div>
                 <VisibleDataSheet/>
-                <ExampleChart/>
+                <VisibleChart/>
                 <VisibleFileReaderBtn/>
                 <VisibleFileDownloadLink/>
             </div>
