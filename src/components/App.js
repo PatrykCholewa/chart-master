@@ -7,6 +7,7 @@ import VisibleUndoButton from "../containers/VisibleUndoButton";
 import VisibleRedoButton from "../containers/VisibleRedoButton";
 import ExampleBarChart from "./exampleCharts/ExampleBarChart";
 import ExampleLineChart from "./exampleCharts/ExampleLineChart";
+import ExampleScatterChart from "./exampleCharts/ExampleScatterChart";
 
 class App extends Component {
     render() {
@@ -18,8 +19,9 @@ class App extends Component {
                 <VisibleRedoButton variant="contained" color="default">REDO</VisibleRedoButton>
                 <VisibleFileReaderBtn/>
                 <VisibleFileDownloadLink/>
-                <ExampleBarChart />
-                <ExampleLineChart />
+                <ExampleBarChart/>
+                <ExampleLineChart/>
+                <ExampleScatterChart/>
             </div>
         );
     }
