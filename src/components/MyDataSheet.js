@@ -4,6 +4,7 @@ import ReactDataSheet from 'react-datasheet';
 import Input from "@material-ui/core/Input/Input";
 import {MdAddCircleOutline} from "react-icons/md";
 import Typography from "@material-ui/core/Typography/Typography";
+import {isPointValid} from "../utils/utils";
 
 const nonDataRows = 3;
 
@@ -26,7 +27,7 @@ class MyDataSheet extends Component {
                     newData.x = value;
                 }
 
-                newData.valid = !isNaN(value);
+                newData.valid = isPointValid(newData);
 
                 this.props.addNewDataByDataSetIndex(newData, setIndex, dataIndex);
             }

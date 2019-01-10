@@ -5,6 +5,7 @@ import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
 import VisibleUndoButton from "../containers/VisibleUndoButton";
 import VisibleRedoButton from "../containers/VisibleRedoButton";
+import {isPointRenderable} from "../utils/utils";
 
 
 class MyBarChart extends Component {
@@ -20,12 +21,14 @@ class MyBarChart extends Component {
         let xAxisDict = {};
 
         this.props.dataSets.forEach( set => {
-            set.data.forEach( point => {
+            set.data
+                .filter( point => isPointRenderable(point))
+                .forEach( point => {
                 let xPoints = xAxisDict[point.x] === undefined ? {} : xAxisDict[point.x];
 
                 xPoints[set.index] = point.y;
                 xAxisDict[point.x] = xPoints;
-            });
+            })
         });
 
         return Object.keys(xAxisDict).map((x) => ({x, ...xAxisDict[x]}));
@@ -65,7 +68,7 @@ class MyBarChart extends Component {
         return (
             <div>
                 <VisibleUndoButton variant="contained" color="default">UNDO</VisibleUndoButton>
-                <VisibleRedoButton variant="contained" color="default">Redo</VisibleRedoButton>
+                <VisibleRedoButton variant="contained" color="default">REDO</VisibleRedoButton>
                 <div align="center">
                     {this.getTitleDomPart()}
                     <BarChart width={600}
