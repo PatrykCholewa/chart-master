@@ -8,6 +8,7 @@ import VisibleRedoButton from "../containers/VisibleRedoButton";
 import ExampleBarChart from "./exampleCharts/ExampleBarChart";
 import ExampleLineChart from "./exampleCharts/ExampleLineChart";
 import ExampleScatterChart from "./exampleCharts/ExampleScatterChart";
+import ExamplePieChart from "./exampleCharts/ExamplePieChart";
 
 class App extends Component {
     render() {
@@ -20,6 +21,7 @@ class App extends Component {
                 <VisibleFileReaderBtn/>
                 <VisibleFileDownloadLink/>
                 <ExampleBarChart/>
+                <ExamplePieChart/>
                 <ExampleLineChart/>
                 <ExampleScatterChart/>
             </div>
