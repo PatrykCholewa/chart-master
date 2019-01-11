@@ -3,7 +3,7 @@ import {BarChart, Bar, XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Lege
 import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
-import {isPointRenderable} from "../../utils/utils";
+import {getRenderableDataForDataSets} from "../../utils/utils";
 
 
 class MyBarChart extends Component {
@@ -13,24 +13,6 @@ class MyBarChart extends Component {
             title: props.chartParams.title,
             isTitleBeingChanged: false
         }
-    }
-
-    getData() {
-        let xAxisDict = {};
-
-        this.props.dataSets.forEach( set => {
-            set.data
-                .filter( point => isPointRenderable(point))
-                .forEach( point => {
-                let xPoints = xAxisDict[point.x] === undefined ? {} : xAxisDict[point.x];
-
-                xPoints[set.index] = point.y;
-                xAxisDict[point.x] = xPoints;
-            })
-        });
-
-        return Object.keys(xAxisDict).map((x) => ({x, ...xAxisDict[x]}));
-
     }
 
     getBarList() {
@@ -69,7 +51,7 @@ class MyBarChart extends Component {
                     {this.getTitleDomPart()}
                     <BarChart width={600}
                               height={300}
-                              data={this.getData()}
+                              data={getRenderableDataForDataSets(this.props.dataSets)}
                               stackOffset="sign"
                               margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                         <CartesianGrid strokeDasharray="3 3"/>
