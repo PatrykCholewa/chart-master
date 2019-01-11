@@ -3,8 +3,9 @@ import {XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Legend} from "recha
 import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
-import {getRenderableDataForDataSets} from "../../utils/utils";
-import MyBarChart from "../charts/MyBarChart";
+import MyBarChart from "./charts/MyBarChart";
+import {BAR_CHART, LINE_CHART} from "../constants/ChartType";
+import MyLineChart from "./charts/MyLineChart";
 
 const chartInsideRenderables = [
     (<CartesianGrid strokeDasharray="3 3"/>),
@@ -56,15 +57,30 @@ class AbstractChart extends Component {
             );
     }
 
-    render () {
-        return (
-            <div>
-                <div align="center">
-                    {this.getTitleDomPart()}
+    getChartByType() {
+        switch(this.props.chartParams.type){
+            case LINE_CHART:
+                return (
+                    <MyLineChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
+                        {chartInsideRenderables}
+                    </MyLineChart>
+                );
+            case BAR_CHART:
+                return (
                     <MyBarChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
                         {chartInsideRenderables}
                     </MyBarChart>
-                </div>
+                );
+            default:
+                return [];
+        }
+    }
+
+    render () {
+        return (
+            <div align="center">
+                {this.getTitleDomPart()}
+                {this.getChartByType()}
             </div>
         );
     }
