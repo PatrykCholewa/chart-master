@@ -51,4 +51,8 @@ a {
     width: 100px;
     height: 100px;
     vertical-align: middle;
+
+    .horizontal-chart {
+        transform: rotate(90deg);
+    }
 }

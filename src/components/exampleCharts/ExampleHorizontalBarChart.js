@@ -1,13 +1,14 @@
-import {Bar, BarChart} from "recharts";
 import React from "react";
-import {EXAMPLE_BAR_DATA} from "../../constants/DataConstants";
 import Paper from "@material-ui/core/Paper/Paper";
+import {Bar, BarChart} from "recharts";
+import {EXAMPLE_BAR_DATA} from "../../constants/DataConstants";
 
-class ExampleBarChart extends React.Component {
+class ExampleHorizontalBarChart extends React.Component {
     render() {
         return (
             <Paper className="example-chart-paper">
-                <BarChart width={100}
+                <BarChart className="horizontal-chart"
+                          width={100}
                           height={100}
                           data={EXAMPLE_BAR_DATA}
                           onClick={() => this.props.onClick()}>
@@ -18,4 +19,4 @@ class ExampleBarChart extends React.Component {
     }
 }
 
-export default ExampleBarChart;
+export default ExampleHorizontalBarChart;

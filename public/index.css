@@ -42,3 +42,6 @@ a {
   height: 100px;
   vertical-align: middle;
 }
+.example-chart-paper .horizontal-chart {
+  transform: rotate(90deg);
+}
