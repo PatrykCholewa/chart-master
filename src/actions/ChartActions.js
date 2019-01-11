@@ -1,7 +1,12 @@
 import {
     SET_NEW_DATA_BY_DATA_SET_INDEX,
     SET_LABEL_BY_INDEX,
-    SET_PURE_DATA, SET_CHART_TITLE, SET_COLOR_BY_INDEX, ADD_NEW_EMPTY_DATA_SET, ADD_NEW_EMPTY_DATA_TO_EVERY_SET
+    SET_PURE_DATA,
+    SET_CHART_TITLE,
+    SET_COLOR_BY_INDEX,
+    ADD_NEW_EMPTY_DATA_SET,
+    ADD_NEW_EMPTY_DATA_TO_EVERY_SET,
+    SET_CHART_TYPE
 } from "../constants/ChartActionTypes";
 
 export const setPureData = (dataList) => ({
@@ -39,4 +44,9 @@ export const addNewEmptyDataSet = () => ({
 
 export const addNewEmptyDataToEverySet = () => ({
     type: ADD_NEW_EMPTY_DATA_TO_EVERY_SET
+});
+
+export const setChartType = newChartType => ({
+    type: SET_CHART_TYPE,
+    newChartType
 });
