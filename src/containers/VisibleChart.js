@@ -1,8 +1,9 @@
-import MyBarChart from "../components/MyBarChart";
+import MyBarChart from "../components/charts/MyBarChart";
 import {connect} from "react-redux";
 import {ActionCreators} from "redux-undo";
 import {deepCopyObject} from "../utils/utils";
 import {setChartTitle} from "../actions/ChartActions";
+import MyLineChart from "../components/charts/MyLineChart";
 
 const mapStateToProps = (state, ownProps) => ({
     dataSets: state.dataSets.present,
@@ -18,4 +19,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(MyBarChart);
+)(MyLineChart);

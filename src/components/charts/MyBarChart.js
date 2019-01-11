@@ -3,7 +3,7 @@ import {BarChart, Bar, XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Lege
 import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
-import {isPointRenderable} from "../utils/utils";
+import {isPointRenderable} from "../../utils/utils";
 
 
 class MyBarChart extends Component {
