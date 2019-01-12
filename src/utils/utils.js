@@ -10,16 +10,18 @@ export const getRenderableDataForDataSets = dataSets => {
     let xAxisDict = {};
 
     dataSets.forEach( (set, index) => {
-        set.data
-            .filter( point => isPointRenderable(point))
-            .sort( (p1, p2) => p1.x > p2.x )
-            .forEach( point => {
-                let xPoints = xAxisDict[point.x] === undefined ? {} : xAxisDict[point.x];
+        getRenderableDataForSet(set).forEach( point => {
+            let xPoints = xAxisDict[point.x] === undefined ? {} : xAxisDict[point.x];
 
-                xPoints[index] = point.y;
-                xAxisDict[point.x] = xPoints;
-            })
+            xPoints[index] = point.y;
+            xAxisDict[point.x] = xPoints;
+        })
     });
 
     return Object.keys(xAxisDict).map((x) => ({x, ...xAxisDict[x]}));
 };
+
+export const getRenderableDataForSet = set =>
+    set.data
+        .filter( point => isPointRenderable(point))
+        .sort( (p1, p2) => p1.x > p2.x );

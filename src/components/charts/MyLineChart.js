@@ -3,6 +3,7 @@ import React from "react";
 import LineChart from "recharts/es6/chart/LineChart";
 import Line from "recharts/es6/cartesian/Line";
 import {getRenderableDataForDataSets} from "../../utils/utils";
+import {XAxis, YAxis} from "recharts";
 
 class MyLineChart extends Component {
 
@@ -13,6 +14,8 @@ class MyLineChart extends Component {
     render () {
         return (
             <LineChart data={getRenderableDataForDataSets(this.props.dataSets)} {...this.props.chartParams}>
+                <XAxis type="number" dataKey="x"/>
+                <YAxis/>
                 {this.props.children}
                 {this.getLineList()}
             </LineChart>

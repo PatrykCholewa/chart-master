@@ -4,13 +4,12 @@ import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
 import MyBarChart from "./charts/MyBarChart";
-import {BAR_CHART, LINE_CHART} from "../constants/ChartType";
+import {BAR_CHART, LINE_CHART, SCATTER_CHART} from "../constants/ChartType";
 import MyLineChart from "./charts/MyLineChart";
+import MyScatterChart from "./charts/MyScatterChart";
 
 const chartInsideRenderables = [
     (<CartesianGrid strokeDasharray="3 3"/>),
-    (<XAxis type="number" dataKey="x"/>),
-    (<YAxis/>),
     (<Tooltip/>),
     (<Legend verticalAlign="bottom" wrapperStyle={{lineHeight: '40px'}}/>),
     (<ReferenceLine y={0} stroke='#000'/>)
@@ -70,6 +69,12 @@ class AbstractChart extends Component {
                     <MyBarChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
                         {chartInsideRenderables}
                     </MyBarChart>
+                );
+            case SCATTER_CHART:
+                return (
+                    <MyScatterChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
+                        {chartInsideRenderables}
+                    </MyScatterChart>
                 );
             default:
                 return [];

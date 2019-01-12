@@ -10,9 +10,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    setTitle: newTitle => dispatch(setChartTitle(newTitle)),
-    undo: () => dispatch(ActionCreators.undo()),
-    redo: () => dispatch(ActionCreators.redo())
+    setTitle: newTitle => dispatch(setChartTitle(newTitle))
 });
 
 export default connect(
