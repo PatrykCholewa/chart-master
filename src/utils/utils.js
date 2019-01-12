@@ -21,10 +21,16 @@ export const getRenderableDataForDataSets = dataSets => {
     return Object.keys(xAxisDict).map((x) => ({x, ...xAxisDict[x]}));
 };
 
+export const getRenderableNumberDataForSet = set =>
+    getRenderableDataForSet(set).map( point => ({
+        x: Number(point.x),
+        y: Number(point.y)
+    }));
+
 export const getRenderableDataForSet = set => {
-  const d = set.data
+    const d = set.data
       .filter( point => isPointRenderable(point))
       .sort( (p1, p2) => p1.x > p2.x );
-  console.log(d);
-  return d;
+    console.log(d);
+    return d;
 };

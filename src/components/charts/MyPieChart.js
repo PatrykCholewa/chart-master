@@ -2,7 +2,7 @@ import {Component} from "react";
 import React from "react";
 import PieChart from "recharts/es6/chart/PieChart"
 import Pie from "recharts/es6/polar/Pie"
-import {getRenderableDataForSet} from "../../utils/utils";
+import {getRenderableNumberDataForSet} from "../../utils/utils";
 
 class MyPieChart extends Component {
 
@@ -14,9 +14,9 @@ class MyPieChart extends Component {
 
     getPieList() {
         return this.props.dataSets.map((set, index) => (
-            <Pie data={getRenderableDataForSet(set).map( point => ({value: Number(point.x)}) )}
+            <Pie data={getRenderableNumberDataForSet(set)}
                  key={"PIE" + index}
-                 dataKey="value"
+                 dataKey="y"
                  cx="50%"
                  cy="50%"
                  innerRadius={this.calculatePercent(index)}
