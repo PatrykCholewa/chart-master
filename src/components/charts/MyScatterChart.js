@@ -23,7 +23,6 @@ class MyScatterChart extends Component {
                     {
                         data.map((point, pointIndex) => {
                             return <Cell key={`CELL ${pointIndex}`}
-                                         shape="cross"
                                          onClick={() => this.props.initLabelChange(point, index, pointIndex)}/>
                         })
                     }

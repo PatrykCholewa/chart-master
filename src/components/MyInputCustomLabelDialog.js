@@ -23,13 +23,16 @@ class MyInputCustomLabelDialog extends React.Component {
     }
 
     handleClose(event) {
-        this.props.setDataLabel(createLabelByText(this.state.label), this.props.dataSetIndex, this.props.dataIndex);
+        this.props.setDataLabel(
+            createLabelByText(this.state.label),
+            this.props.dataSetIndex,
+            this.props.dataIndex);
         this.props.handleClose();
     }
 
     render() {
         return (
-            <Dialog onClose={()=>this.handleClose()}
+            <Dialog onRequestClose={(event)=>this.handleClose(event)}
                     open={this.props.open}
                     aria-labelledby="simple-dialog-title">
                 <DialogTitle id="simple-dialog-title">INSERT CUSTOM LABEL</DialogTitle>
