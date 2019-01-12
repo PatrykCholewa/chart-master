@@ -1,10 +1,10 @@
 import {deepCopyObject} from "../utils/utils";
 import {SET_CHART_TITLE, SET_CHART_TYPE} from "../constants/ChartActionTypes";
-import {BAR_CHART} from "../constants/ChartType";
+import {SCATTER_CHART} from "../constants/ChartType";
 
 const initialState = {
     title: "MY CHART",
-    type: BAR_CHART
+    type: SCATTER_CHART
 };
 
 export const chart = (state = initialState, action) => {
