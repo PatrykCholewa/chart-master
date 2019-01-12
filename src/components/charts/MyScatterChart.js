@@ -6,8 +6,13 @@ import {XAxis, YAxis} from "recharts";
 import {getRenderableDataForSet} from "../../utils/utils";
 import Cell from "recharts/es6/component/Cell";
 import LabelList from "recharts/es6/component/LabelList";
+import MyInputCustomLabelDialog from "../MyInputCustomLabelDialog";
 
 class MyScatterChart extends Component {
+    constructor(props){
+        super(props);
+        this.state = {open: false};
+    }
 
     getScatterList() {
         return this.props.dataSets.map( (set, index) => {
@@ -31,12 +36,16 @@ class MyScatterChart extends Component {
 
     render () {
         return (
-            <ScatterChart {...this.props.chartParams}>
-                <XAxis type="number" dataKey="x"/>
-                <YAxis type="number" dataKey="y"/>
-                {this.props.children}
-                {this.getScatterList()}
-            </ScatterChart>
+            <div>
+                <MyInputCustomLabelDialog open={this.state.open} handleClose={()=>this.setState({open: false})} currentLabel="LAB\n⬇"/>
+                <ScatterChart {...this.props.chartParams} onClick={()=>this.setState({open: true})}>
+
+                    <XAxis type="number" dataKey="x"/>
+                    <YAxis type="number" dataKey="y"/>
+                    {this.props.children}
+                    {this.getScatterList()}
+                </ScatterChart>
+            </div>
         );
     }
 
