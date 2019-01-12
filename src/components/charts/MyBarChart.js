@@ -18,7 +18,7 @@ class MyBarChart extends Component {
     render () {
         return (
             <BarChart {...this.props.chartParams} data={getRenderableDataForDataSets(this.props.dataSets)}>
-                <XAxis type="number" dataKey="x"/>
+                <XAxis type="number" dataKey="x" domain={['dataMin-1', 'dataMax+1']} />/>
                 <YAxis/>
                 {this.props.children}
                 {this.getBarList()}

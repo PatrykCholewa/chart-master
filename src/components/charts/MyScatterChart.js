@@ -5,6 +5,7 @@ import Scatter from "recharts/es6/cartesian/Scatter";
 import {XAxis, YAxis} from "recharts";
 import {getRenderableDataForSet} from "../../utils/utils";
 
+
 class MyScatterChart extends Component {
 
     getScatterList() {
@@ -19,7 +20,7 @@ class MyScatterChart extends Component {
     render () {
         return (
             <ScatterChart {...this.props.chartParams}>
-                <XAxis type="number" dataKey="x"/>
+                <XAxis type="number" dataKey="x" domain={['dataMin', 'dataMax']}/>
                 <YAxis type="number" dataKey="y"/>
                 {this.props.children}
                 {this.getScatterList()}
