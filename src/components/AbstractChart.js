@@ -4,9 +4,10 @@ import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
 import MyBarChart from "./charts/MyBarChart";
-import {BAR_CHART, LINE_CHART, SCATTER_CHART} from "../constants/ChartType";
+import {BAR_CHART, LINE_CHART, SCATTER_CHART, PIE_CHART} from "../constants/ChartType";
 import MyLineChart from "./charts/MyLineChart";
 import MyScatterChart from "./charts/MyScatterChart";
+import MyPieChart from "./charts/MyPieChart";
 
 const chartInsideRenderables = [
     (<CartesianGrid key={"CHART INSIDE RENDERABLE 1"} strokeDasharray="3 3"/>),
@@ -75,6 +76,12 @@ class AbstractChart extends Component {
                     <MyScatterChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
                         {chartInsideRenderables}
                     </MyScatterChart>
+                );
+            case PIE_CHART:
+                return (
+                    <MyPieChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
+                        {chartInsideRenderables}
+                    </MyPieChart>
                 );
             default:
                 return [];

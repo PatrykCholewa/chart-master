@@ -1,5 +1,5 @@
 import connect from "react-redux/es/connect/connect";
-import {BAR_CHART, LINE_CHART, SCATTER_CHART} from "../constants/ChartType";
+import {BAR_CHART, LINE_CHART, SCATTER_CHART, PIE_CHART} from "../constants/ChartType";
 import SetChartTypeMenu from "../components/SetChartTypeMenu";
 import {setChartType} from "../actions/ChartActions";
 
@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     setVerticalBarChart: () => dispatch(setChartType(BAR_CHART)),
     setAreaChart: () => console.log("NOT SUPPORTED"),
     setScatterChart: () => dispatch(setChartType(SCATTER_CHART)),
-    setPieChart: () => console.log("NOT SUPPORTED")
+    setPieChart: () => dispatch(setChartType(PIE_CHART))
 });
 
 export default connect(
