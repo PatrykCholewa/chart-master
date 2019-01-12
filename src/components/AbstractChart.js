@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
 import MyBarChart from "./charts/MyBarChart";
-import {BAR_CHART, LINE_CHART, SCATTER_CHART, PIE_CHART, AREA_CHART} from "../constants/ChartType";
+import {VERTICAL_BAR_CHART, LINE_CHART, SCATTER_CHART, PIE_CHART, AREA_CHART} from "../constants/ChartType";
 import MyLineChart from "./charts/MyLineChart";
 import MyScatterChart from "./charts/MyScatterChart";
 import MyPieChart from "./charts/MyPieChart";
@@ -84,7 +84,7 @@ class AbstractChart extends Component {
                         {chartInsideRenderables}
                     </MyLineChart>
                 );
-            case BAR_CHART:
+            case VERTICAL_BAR_CHART:
                 return (
                     <MyBarChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
                         {chartInsideRenderables}
@@ -100,9 +100,7 @@ class AbstractChart extends Component {
                 );
             case PIE_CHART:
                 return (
-                    <MyPieChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
-                        {chartInsideRenderables}
-                    </MyPieChart>
+                    <MyPieChart chartParams={chartStandardProps} dataSets={this.props.dataSets}/>
                 );
             case AREA_CHART:
                 return (
