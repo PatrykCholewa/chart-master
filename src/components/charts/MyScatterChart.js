@@ -8,6 +8,7 @@ import Cell from "recharts/es6/component/Cell";
 import LabelList from "recharts/es6/component/LabelList";
 import VisibleInputCustomLabelDialog from "../../containers/VisibleInputCustomLabelDialog";
 
+
 class MyScatterChart extends Component {
     constructor(props){
         super(props);
@@ -61,8 +62,8 @@ class MyScatterChart extends Component {
                                                handleClose={()=>this.setState({open: false})}
                                                {...this.state.labelChangeInfo} />
                 <ScatterChart {...this.props.chartParams} >
-                    <XAxis type="number" dataKey="x"/>
-                    <YAxis type="number" dataKey="y"/>
+                    <XAxis type="number" dataKey="x" domain={['dataMin', 'dataMax']}/>
+                    <YAxis type="number" dataKey="y"  domain={[0, 'dataMax + 1']}/>
                     {this.props.children}
                     {this.getScatterList()}
                 </ScatterChart>

@@ -15,12 +15,22 @@ const initialState = [
             {
                 x: "1",
                 y: "2",
-                label: "CUSTOM TEXT\n⬇",
                 valid: true
             },
             {
                 x: "2",
                 y: "3",
+                valid: true
+            },
+            {
+                x: "4",
+                y: "4",
+                valid: true
+            },
+            {
+                x: "3",
+                y: "6",
+                label: "SET CUSTOM TEXT\n⬇",
                 valid: true
             }
         ]
@@ -31,15 +41,25 @@ const initialState = [
         color: DEFAULT_COLOR_LIST[1],
         data: [
             {
-                x: "0",
-                y: "-1",
+                x: "2",
+                y: "4",
                 valid: true
             },
             {
                 x: "3",
                 y: "3",
                 valid: true
-            }
+            },
+            {
+                x: "1",
+                y: "1",
+                valid: true
+            },
+            {
+                x: "4",
+                y: "8",
+                valid: true
+            },
         ]
     }
 ];

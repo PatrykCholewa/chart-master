@@ -21,8 +21,8 @@ class MyLineChart extends Component {
     render() {
         return (
             <AreaChart data={getRenderableDataForDataSets(this.props.dataSets)} {...this.props.chartParams}>
-                <XAxis type="number" dataKey="x"/>
-                <YAxis/>
+                <XAxis type="number" dataKey="x" domain={['dataMin', 'dataMax']}/>
+                <YAxis domain={[0, 'dataMax + 1']}/>
                 {this.props.children}
                 {this.getAreaList()}
             </AreaChart>
