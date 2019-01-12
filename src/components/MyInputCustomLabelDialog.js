@@ -6,7 +6,7 @@ import React from "react";
 
 const getCurrentLabelText = label => label !== undefined && label.length > 2 ? label.substring(0, label.length - 2) : "";
 
-const createLabelByText = text => text + "\n⬇";
+const createLabelByText = text => text.trim().length === 0 ? undefined : text + "\n⬇";
 
 class MyInputCustomLabelDialog extends React.Component {
     constructor(props) {
@@ -16,8 +16,14 @@ class MyInputCustomLabelDialog extends React.Component {
         }
     }
 
+    componentWillReceiveProps(props, context) {
+        this.setState({
+            label: getCurrentLabelText(props.currentLabel)
+        });
+    }
+
     handleClose(event) {
-        // this.props.setLabelForData(createLabelByText(this.state.label), this.props.dataSetIndex, this.props.dataIndex);
+        this.props.setDataLabel(createLabelByText(this.state.label), this.props.dataSetIndex, this.props.dataIndex);
         this.props.handleClose();
     }
 

@@ -6,12 +6,30 @@ import {XAxis, YAxis} from "recharts";
 import {getRenderableDataForSet} from "../../utils/utils";
 import Cell from "recharts/es6/component/Cell";
 import LabelList from "recharts/es6/component/LabelList";
-import MyInputCustomLabelDialog from "../MyInputCustomLabelDialog";
+import VisibleInputCustomLabelDialog from "../../containers/VisibleInputCustomLabelDialog";
 
 class MyScatterChart extends Component {
     constructor(props){
         super(props);
-        this.state = {open: false};
+        this.state = {
+            open: false,
+            labelChangeInfo: {
+                currentLabel: undefined,
+                dataSetIndex: undefined,
+                dataIndex: undefined
+            }
+        };
+    }
+
+    initLabelChange(point, dataSetIndex, pointIndex){
+        this.setState({
+            labelChangeInfo: {
+                currentLabel: point.label,
+                dataSetIndex: dataSetIndex,
+                dataIndex: pointIndex
+            }
+        });
+        this.setState({open: true});
     }
 
     getScatterList() {
@@ -26,7 +44,9 @@ class MyScatterChart extends Component {
                     <LabelList className="arrow-pointer-container" dataKey="label" position="top" />
                     {
                         data.map((point, pointIndex) => {
-                            return <Cell key={`CELL ${pointIndex}`} shape="cross" onClick={() => console.log(point)}/>
+                            return <Cell key={`CELL ${pointIndex}`}
+                                         shape="cross"
+                                         onClick={() => this.initLabelChange(point, index, pointIndex)}/>
                         })
                     }
                 </Scatter>
@@ -37,9 +57,10 @@ class MyScatterChart extends Component {
     render () {
         return (
             <div>
-                <MyInputCustomLabelDialog open={this.state.open} handleClose={()=>this.setState({open: false})} currentLabel="LAB\n⬇"/>
-                <ScatterChart {...this.props.chartParams} onClick={()=>this.setState({open: true})}>
-
+                <VisibleInputCustomLabelDialog open={this.state.open}
+                                               handleClose={()=>this.setState({open: false})}
+                                               {...this.state.labelChangeInfo} />
+                <ScatterChart {...this.props.chartParams} >
                     <XAxis type="number" dataKey="x"/>
                     <YAxis type="number" dataKey="y"/>
                     {this.props.children}

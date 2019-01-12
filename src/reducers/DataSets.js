@@ -1,7 +1,7 @@
 import {
     SET_NEW_DATA_BY_DATA_SET_INDEX,
     SET_LABEL_BY_INDEX,
-    SET_PURE_DATA, SET_COLOR_BY_INDEX, ADD_NEW_EMPTY_DATA_SET, ADD_NEW_EMPTY_DATA_TO_EVERY_SET
+    SET_PURE_DATA, SET_COLOR_BY_INDEX, ADD_NEW_EMPTY_DATA_SET, ADD_NEW_EMPTY_DATA_TO_EVERY_SET, SET_DATA_LABEL
 } from "../constants/ChartActionTypes";
 import {DEFAULT_COLOR_LIST} from "../constants/DefaultColorList";
 import {deepCopyObject} from "../utils/utils";
@@ -88,6 +88,9 @@ export const dataSets = (state = initialState, action) => {
                 color: DEFAULT_COLOR_LIST[index++],
                 data
             }));
+        case SET_DATA_LABEL:
+            newState[action.dataSetIndex].data[action.dataIndex].label = action.newLabel;
+            return newState;
         default:
             return state;
     }
