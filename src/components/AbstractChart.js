@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {XAxis, YAxis, ReferenceLine, CartesianGrid, Tooltip, Legend} from "recharts";
+import {ReferenceLine, CartesianGrid, Tooltip, Legend} from "recharts";
 import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
@@ -9,10 +9,10 @@ import MyLineChart from "./charts/MyLineChart";
 import MyScatterChart from "./charts/MyScatterChart";
 
 const chartInsideRenderables = [
-    (<CartesianGrid strokeDasharray="3 3"/>),
-    (<Tooltip/>),
-    (<Legend verticalAlign="bottom" wrapperStyle={{lineHeight: '40px'}}/>),
-    (<ReferenceLine y={0} stroke='#000'/>)
+    (<CartesianGrid key={"CHART INSIDE RENDERABLE 1"} strokeDasharray="3 3"/>),
+    (<Tooltip key={"CHART INSIDE RENDERABLE 2"}/>),
+    (<Legend key={"CHART INSIDE RENDERABLE 3"} verticalAlign="bottom" wrapperStyle={{lineHeight: '40px'}}/>),
+    (<ReferenceLine key={"CHART INSIDE RENDERABLE 4"} y={0} stroke='#000'/>)
 ];
 
 const chartStandardProps = {

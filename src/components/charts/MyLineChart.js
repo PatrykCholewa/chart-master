@@ -8,7 +8,13 @@ import {XAxis, YAxis} from "recharts";
 class MyLineChart extends Component {
 
     getLineList() {
-        return this.props.dataSets.map( set => (<Line name={set.label} dataKey={set.index} stroke={set.color} stackId="stack"/>) );
+        return this.props.dataSets.map( (set, index) => (
+            <Line name={set.label}
+                  key={"LINE" + index}
+                  dataKey={index}
+                  stroke={set.color}
+                  stackId="stack"/>
+        ));
     };
 
     render () {

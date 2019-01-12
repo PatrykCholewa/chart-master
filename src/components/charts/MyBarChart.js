@@ -6,7 +6,13 @@ import {getRenderableDataForDataSets} from "../../utils/utils";
 class MyBarChart extends Component {
 
     getBarList() {
-        return this.props.dataSets.map( (set, index) => (<Bar name={set.label} dataKey={index} fill={set.color} stackId="stack"/>) );
+        return this.props.dataSets.map( (set, index) => (
+            <Bar name={set.label}
+                 key={"BAR" + index}
+                 dataKey={index}
+                 fill={set.color}
+                 stackId="stack"/>
+        ));
     };
 
     render () {

@@ -8,8 +8,9 @@ import {getRenderableDataForSet} from "../../utils/utils";
 class MyScatterChart extends Component {
 
     getScatterList() {
-        return this.props.dataSets.map( set => (
+        return this.props.dataSets.map( (set, index) => (
             <Scatter name={set.label}
+                     key={"SCATTER" + index}
                      data={getRenderableDataForSet(set)}
                      fill={set.color}/>
         ));
