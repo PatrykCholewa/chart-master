@@ -22,9 +22,14 @@ class MyPieChart extends Component {
     }
 
     getPieList() {
-        return this.props.dataSets.map(set => (
-            <Pie data={this.getDataForPie(set.index)} dataKey="value" cx="50%" cy="50%"
-                 innerRadius={this.calculatePercent(set.index)} outerRadius={this.calculatePercent(set.index + 1)}
+        return this.props.dataSets.map((set, index) => (
+            <Pie data={this.getDataForPie(index)}
+                 key={"PIE" + index}
+                 dataKey="value"
+                 cx="50%"
+                 cy="50%"
+                 innerRadius={this.calculatePercent(index)}
+                 outerRadius={this.calculatePercent(index + 1)}
                  fill={set.color}/>));
     };
 
