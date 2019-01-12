@@ -21,7 +21,7 @@ class MyScatterChart extends Component {
         return (
             <ScatterChart {...this.props.chartParams}>
                 <XAxis type="number" dataKey="x" domain={['dataMin', 'dataMax']}/>
-                <YAxis type="number" dataKey="y"/>
+                <YAxis type="number" dataKey="y"  domain={[0, 'dataMax + 1']}/>
                 {this.props.children}
                 {this.getScatterList()}
             </ScatterChart>

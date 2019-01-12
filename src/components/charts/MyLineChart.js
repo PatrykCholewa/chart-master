@@ -21,7 +21,7 @@ class MyLineChart extends Component {
         return (
             <LineChart data={getRenderableDataForDataSets(this.props.dataSets)} {...this.props.chartParams}>
                 <XAxis type="number" dataKey="x" domain={['dataMin', 'dataMax']}/>
-                <YAxis type="number"/>
+                <YAxis type="number" domain={[0, 'dataMax + 1']}/>
                 {this.props.children}
                 {this.getLineList()}
             </LineChart>

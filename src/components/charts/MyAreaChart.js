@@ -22,7 +22,7 @@ class MyLineChart extends Component {
         return (
             <AreaChart data={getRenderableDataForDataSets(this.props.dataSets)} {...this.props.chartParams}>
                 <XAxis type="number" dataKey="x" domain={['dataMin', 'dataMax']}/>
-                <YAxis/>
+                <YAxis domain={[0, 'dataMax + 1']}/>
                 {this.props.children}
                 {this.getAreaList()}
             </AreaChart>
