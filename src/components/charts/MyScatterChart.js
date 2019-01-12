@@ -4,16 +4,29 @@ import ScatterChart from "recharts/es6/chart/ScatterChart";
 import Scatter from "recharts/es6/cartesian/Scatter";
 import {XAxis, YAxis} from "recharts";
 import {getRenderableDataForSet} from "../../utils/utils";
+import Cell from "recharts/es6/component/Cell";
+import LabelList from "recharts/es6/component/LabelList";
 
 class MyScatterChart extends Component {
 
     getScatterList() {
-        return this.props.dataSets.map( (set, index) => (
-            <Scatter name={set.label}
-                     key={"SCATTER" + index}
-                     data={getRenderableDataForSet(set)}
-                     fill={set.color}/>
-        ));
+        return this.props.dataSets.map( (set, index) => {
+            const data = getRenderableDataForSet(set);
+
+            return (
+                <Scatter name={set.label}
+                         key={"SCATTER" + index}
+                         data={data}
+                         fill={set.color}>
+                    <LabelList className="arrow-pointer-container" dataKey="label" position="top" />
+                    {
+                        data.map((point, pointIndex) => {
+                            return <Cell key={`CELL ${pointIndex}`} shape="cross" onClick={() => console.log(point)}/>
+                        })
+                    }
+                </Scatter>
+            );
+        });
     };
 
     render () {

@@ -45,3 +45,7 @@ a {
 .example-chart-paper .horizontal-chart {
   transform: rotate(90deg);
 }
+
+.arrow-pointer-container {
+  font-size: 2em;
+}

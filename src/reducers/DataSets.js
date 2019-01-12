@@ -5,6 +5,7 @@ import {
 } from "../constants/ChartActionTypes";
 import {DEFAULT_COLOR_LIST} from "../constants/DefaultColorList";
 import {deepCopyObject} from "../utils/utils";
+import React from "react";
 
 const initialState = [
     {
@@ -15,6 +16,8 @@ const initialState = [
             {
                 x: "1",
                 y: "2",
+                label: "⬇",
+                text: "CUSTOM TEXT",
                 valid: true
             },
             {
