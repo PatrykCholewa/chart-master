@@ -29,7 +29,9 @@ class MyInputCustomLabelDialog extends React.Component {
 
     render() {
         return (
-            <Dialog onRequestClose={this.handleClose} open={this.props.open} aria-labelledby="simple-dialog-title">
+            <Dialog onClose={()=>this.handleClose()}
+                    open={this.props.open}
+                    aria-labelledby="simple-dialog-title">
                 <DialogTitle id="simple-dialog-title">INSERT CUSTOM LABEL</DialogTitle>
                 <div>
                     <FormControl>

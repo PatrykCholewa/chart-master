@@ -9,6 +9,7 @@ import MyLineChart from "./charts/MyLineChart";
 import MyScatterChart from "./charts/MyScatterChart";
 import MyPieChart from "./charts/MyPieChart";
 import MyAreaChart from "./charts/MyAreaChart";
+import VisibleInputCustomLabelDialog from "../containers/VisibleInputCustomLabelDialog";
 
 const chartInsideRenderables = [
     (<CartesianGrid key={"CHART INSIDE RENDERABLE 1"} strokeDasharray="3 3"/>),
@@ -29,7 +30,13 @@ class AbstractChart extends Component {
         super(props);
         this.state = {
             title: props.chartParams.title,
-            isTitleBeingChanged: false
+            isTitleBeingChanged: false,
+            labelChangeDialogOpen: false,
+            labelChangeInfo: {
+                currentLabel: undefined,
+                dataSetIndex: undefined,
+                dataIndex: undefined
+            }
         }
     }
 
@@ -58,6 +65,17 @@ class AbstractChart extends Component {
             );
     }
 
+    initLabelChange(point, dataSetIndex, pointIndex){
+        this.setState({
+            labelChangeDialogOpen: true,
+            labelChangeInfo: {
+                currentLabel: point.label,
+                dataSetIndex: dataSetIndex,
+                dataIndex: pointIndex
+            }
+        });
+    }
+
     getChartByType() {
         switch(this.props.chartParams.type){
             case LINE_CHART:
@@ -74,7 +92,9 @@ class AbstractChart extends Component {
                 );
             case SCATTER_CHART:
                 return (
-                    <MyScatterChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
+                    <MyScatterChart chartParams={chartStandardProps}
+                                    dataSets={this.props.dataSets}
+                                    initLabelChange={(p, dsIndex, dIndex) => this.initLabelChange(p, dsIndex, dIndex)}>
                         {chartInsideRenderables}
                     </MyScatterChart>
                 );
@@ -98,6 +118,9 @@ class AbstractChart extends Component {
     render () {
         return (
             <div align="center">
+                <VisibleInputCustomLabelDialog open={this.state.labelChangeDialogOpen}
+                                               handleClose={()=>this.setState({labelChangeDialogOpen: false})}
+                                               {...this.state.labelChangeInfo} />
                 {this.getTitleDomPart()}
                 {this.getChartByType()}
             </div>
