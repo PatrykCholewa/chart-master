@@ -14,6 +14,23 @@ a {
   text-decoration: none;
 }
 
+#app-content .under-topbar {
+  padding-top: 50px;
+  min-height: 100%;
+}
+#app-content .under-topbar aside {
+  padding: 50px 50px 50px 50px;
+  background-color: #90a4ae;
+  width: 20%;
+}
+#app-content .under-topbar main {
+  padding: 50px 50px;
+}
+
+.drawer {
+  margin-top: 200px;
+}
+
 .file-input-button input {
   display: none;
 }

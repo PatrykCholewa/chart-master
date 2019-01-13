@@ -14,6 +14,27 @@ a {
     text-decoration: none;
 }
 
+#app-content {
+    .under-topbar {
+        padding-top: 50px;
+        min-height: 100%;
+
+        aside {
+            padding: 50px 50px 50px 50px;
+            background-color: #90a4ae;
+            width: 20%;
+        }
+
+        main {
+            padding: 50px 50px;
+        }
+    }
+}
+
+.drawer {
+    margin-top: 200px;
+}
+
 .file-input-button {
     input {
         display: none;

@@ -66,7 +66,7 @@ class FileReaderBtn extends Component {
                     type="file"
                 />
                 <label htmlFor="contained-button-file">
-                    <Button variant="contained" component="span" color="default">Import Data</Button>
+                    <Button variant="contained" component="span" color="default" width={300}>Import Data</Button>
                 </label>
             </div>
         );
