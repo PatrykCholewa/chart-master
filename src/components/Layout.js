@@ -15,6 +15,7 @@ import ExampleAreaChart from "./exampleCharts/ExampleAreaChart";
 import ExamplePieChart from "./exampleCharts/ExamplePieChart";
 import ExampleLineChart from "./exampleCharts/ExampleLineChart";
 import ExampleScatterChart from "./exampleCharts/ExampleScatterChart";
+import Paper from "@material-ui/core/Paper/Paper";
 
 class Layout extends Component {
     render() {
@@ -78,12 +79,15 @@ class Layout extends Component {
                         <main>
                             <Grid container spacing={8} justify="center" direction="column">
                                 <Grid item>
-                                    <VisibleChart/>
-
+                                    <Paper elevation={4}>
+                                        <VisibleChart/>
+                                    </Paper>
                                 </Grid>
                                 <Grid item>
-                                    <div align="center">
-                                        <VisibleDataSheet/>
+                                    <div align="center" className="data-sheet-paper">
+                                        <Paper elevation={4}>
+                                            <VisibleDataSheet/>
+                                        </Paper>
                                     </div>
                                 </Grid>
                             </Grid>
