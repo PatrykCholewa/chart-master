@@ -1,9 +1,9 @@
-import React, {Component} from "react";
-import {BarChart, Bar, XAxis, YAxis} from "recharts";
+import {Component} from "react";
+import {Bar, BarChart, XAxis, YAxis} from "recharts";
 import {getRenderableDataForDataSets} from "../../utils/utils";
+import React from "react";
 
-
-class MyBarChart extends Component {
+class MyHorizontalBarChart extends Component {
 
     getBarList() {
         return this.props.dataSets.map( (set, index) => (
@@ -26,7 +26,6 @@ class MyBarChart extends Component {
         );
     }
 
-
 }
 
-export default MyBarChart;
+export default MyHorizontalBarChart;

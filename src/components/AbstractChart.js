@@ -3,13 +3,21 @@ import {ReferenceLine, CartesianGrid, Tooltip, Legend} from "recharts";
 import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import Input from "@material-ui/core/Input/Input";
-import MyBarChart from "./charts/MyBarChart";
-import {VERTICAL_BAR_CHART, LINE_CHART, SCATTER_CHART, PIE_CHART, AREA_CHART} from "../constants/ChartType";
+import MyVerticalBarChart from "./charts/MyVerticalBarChart";
+import {
+    VERTICAL_BAR_CHART,
+    LINE_CHART,
+    SCATTER_CHART,
+    PIE_CHART,
+    AREA_CHART,
+    HORIZONTAL_BAR_CHART
+} from "../constants/ChartType";
 import MyLineChart from "./charts/MyLineChart";
 import MyScatterChart from "./charts/MyScatterChart";
 import MyPieChart from "./charts/MyPieChart";
 import MyAreaChart from "./charts/MyAreaChart";
 import VisibleInputCustomLabelDialog from "../containers/VisibleInputCustomLabelDialog";
+import MyHorizontalBarChart from "./charts/MyHorizontalBarChart";
 
 const chartInsideRenderables = [
     (<CartesianGrid key={"CHART INSIDE RENDERABLE 1"} strokeDasharray="3 3"/>),
@@ -86,9 +94,17 @@ class AbstractChart extends Component {
                 );
             case VERTICAL_BAR_CHART:
                 return (
-                    <MyBarChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
+                    <MyVerticalBarChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
                         {chartInsideRenderables}
-                    </MyBarChart>
+                    </MyVerticalBarChart>
+                );
+            case HORIZONTAL_BAR_CHART:
+                return (
+                    <MyHorizontalBarChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
+                        <CartesianGrid key={"CHART INSIDE RENDERABLE 1"} strokeDasharray="3 3"/>,
+                        <Tooltip key={"CHART INSIDE RENDERABLE 2"}/>,
+                        <Legend key={"CHART INSIDE RENDERABLE 3"} verticalAlign="bottom" wrapperStyle={{lineHeight: '40px'}}/>,
+                    </MyHorizontalBarChart>
                 );
             case SCATTER_CHART:
                 return (
