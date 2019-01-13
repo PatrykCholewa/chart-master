@@ -27,8 +27,8 @@ class Layout extends Component {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <Grid container spacing={16} className="under-topbar" justify="flex-start" direction="row">
-                    <Grid item>
+                <Grid container spacing={16} className="under-topbar" justify="center" direction="row">
+                        <Grid item xs={4}>
                         <aside>
                             <Grid container spacing={16} justify="center">
                                 <Grid item container spacing={16} justify="center">
@@ -74,14 +74,15 @@ class Layout extends Component {
                             </Grid>
                         </aside>
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={8}>
                         <main>
                             <Grid container spacing={8} justify="center" direction="column">
                                 <Grid item>
-                                    <VisibleDataSheet/>
+                                    <VisibleChart/>
+
                                 </Grid>
                                 <Grid item>
-                                    <VisibleChart/>
+                                    <VisibleDataSheet/>
                                 </Grid>
                             </Grid>
                         </main>

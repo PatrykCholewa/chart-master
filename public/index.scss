@@ -16,17 +16,18 @@ a {
 
 #app-content {
     .under-topbar {
+        justify-content: flex-start;
         padding-top: 50px;
-        min-height: 100%;
+        height: 100%;
 
         aside {
-            padding: 50px 50px 50px 50px;
+            padding-top: 50px;
             background-color: #90a4ae;
-            width: 20%;
+            height: 100%;
         }
 
         main {
-            padding: 50px 50px;
+            padding-top: 50px;
         }
     }
 }
