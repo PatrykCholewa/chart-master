@@ -29,7 +29,11 @@ a {
   padding-top: 100px;
 }
 #app-content .under-topbar main .data-sheet-paper {
-  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-right: 15px;
+}
+#app-content .under-topbar main .data-sheet-paper .paper {
+  padding-top: 10px;
 }
 
 .drawer {

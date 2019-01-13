@@ -129,7 +129,7 @@ class AbstractChart extends Component {
 
     render () {
         return (
-            <div align="center">
+            <div>
                 <VisibleInputCustomLabelDialog open={this.state.labelChangeDialogOpen}
                                                handleClose={()=>this.setState({labelChangeDialogOpen: false})}
                                                {...this.state.labelChangeInfo} />

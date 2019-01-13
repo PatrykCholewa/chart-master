@@ -79,13 +79,15 @@ class Layout extends Component {
                         <main>
                             <Grid container spacing={8} justify="center" direction="column">
                                 <Grid item>
-                                    <Paper elevation={4}>
-                                        <VisibleChart/>
-                                    </Paper>
+                                    <div align="center" className="data-sheet-paper">
+                                        <Paper elevation={4} className="paper">
+                                            <VisibleChart/>
+                                        </Paper>
+                                    </div>
                                 </Grid>
                                 <Grid item>
                                     <div align="center" className="data-sheet-paper">
-                                        <Paper elevation={4}>
+                                        <Paper elevation={4} className="paper">
                                             <VisibleDataSheet/>
                                         </Paper>
                                     </div>
