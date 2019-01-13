@@ -101,9 +101,7 @@ class AbstractChart extends Component {
             case HORIZONTAL_BAR_CHART:
                 return (
                     <MyHorizontalBarChart chartParams={chartStandardProps} dataSets={this.props.dataSets}>
-                        <CartesianGrid key={"CHART INSIDE RENDERABLE 1"} strokeDasharray="3 3"/>,
-                        <Tooltip key={"CHART INSIDE RENDERABLE 2"}/>,
-                        <Legend key={"CHART INSIDE RENDERABLE 3"} verticalAlign="bottom" wrapperStyle={{lineHeight: '40px'}}/>,
+                        {chartInsideRenderables}
                     </MyHorizontalBarChart>
                 );
             case SCATTER_CHART:

@@ -13,7 +13,7 @@ export const getRenderableDataForDataSets = dataSets => {
         getRenderableDataForSet(set).forEach( point => {
             let xPoints = xAxisDict[point.x] === undefined ? {} : xAxisDict[point.x];
 
-            xPoints[index] = point.y;
+            xPoints[index] = Number(point.y);
             xAxisDict[point.x] = xPoints;
         })
     });

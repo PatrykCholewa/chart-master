@@ -4,7 +4,7 @@ import {getRenderableDataForDataSets} from "../../utils/utils";
 
 
 class MyVerticalBarChart extends Component {
-
+    
     getBarList() {
         return this.props.dataSets.map( (set, index) => (
             <Bar name={set.label}
@@ -17,15 +17,16 @@ class MyVerticalBarChart extends Component {
 
     render () {
         return (
-            <BarChart {...this.props.chartParams} data={getRenderableDataForDataSets(this.props.dataSets)}>
+            <BarChart {...this.props.chartParams}
+                      layout="horizontal"
+                      data={getRenderableDataForDataSets(this.props.dataSets)}>
                 <XAxis type="number" dataKey="x" domain={['dataMin-1', 'dataMax+1']} />/>
-                <YAxis  domain={[0, 'dataMax + 1']}/>
+                <YAxis type="number" domain={[0, 'dataMax + 1']}/>
                 {this.props.children}
                 {this.getBarList()}
             </BarChart>
         );
     }
-
 
 }
 

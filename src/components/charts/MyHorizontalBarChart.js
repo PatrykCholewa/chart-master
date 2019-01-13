@@ -10,16 +10,17 @@ class MyHorizontalBarChart extends Component {
             <Bar name={set.label}
                  key={"BAR" + index}
                  dataKey={index}
-                 fill={set.color}
-                 stackId="stack"/>
+                 fill={set.color}/>
         ));
     };
 
     render () {
         return (
-            <BarChart {...this.props.chartParams} data={getRenderableDataForDataSets(this.props.dataSets)}>
-                <XAxis type="number" dataKey="x" domain={['dataMin-1', 'dataMax+1']} />/>
-                <YAxis  domain={[0, 'dataMax + 1']}/>
+            <BarChart {...this.props.chartParams}
+                      layout="vertical"
+                      data={getRenderableDataForDataSets(this.props.dataSets)}>
+                <XAxis type="number"/>
+                <YAxis type="category" dataKey="x"/>
                 {this.props.children}
                 {this.getBarList()}
             </BarChart>
