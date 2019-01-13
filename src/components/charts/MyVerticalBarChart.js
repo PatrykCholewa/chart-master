@@ -4,7 +4,7 @@ import {getRenderableDataForDataSets} from "../../utils/utils";
 
 
 class MyVerticalBarChart extends Component {
-    
+
     getBarList() {
         return this.props.dataSets.map( (set, index) => (
             <Bar name={set.label}

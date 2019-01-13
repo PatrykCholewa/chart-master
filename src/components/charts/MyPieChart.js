@@ -14,7 +14,7 @@ class MyPieChart extends Component {
 
     getPieList() {
         return this.props.dataSets.map((set, index) => (
-            <Pie data={getRenderableDataForSet(set).map( point => ({...point, y: Number(point.y)}) )}
+            <Pie data={getRenderableDataForSet(set).map( point => ({...point, x: Number(point.x), y: Number(point.y)}) )}
                  key={"PIE" + index}
                  label
                  nameKey="x"
