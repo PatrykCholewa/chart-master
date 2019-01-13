@@ -82,7 +82,9 @@ class Layout extends Component {
 
                                 </Grid>
                                 <Grid item>
-                                    <VisibleDataSheet/>
+                                    <div align="center">
+                                        <VisibleDataSheet/>
+                                    </div>
                                 </Grid>
                             </Grid>
                         </main>

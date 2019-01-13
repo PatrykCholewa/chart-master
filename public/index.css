@@ -16,16 +16,14 @@ a {
 
 #app-content .under-topbar {
   justify-content: flex-start;
-  padding-top: 50px;
-  height: 100%;
 }
 #app-content .under-topbar aside {
-  padding-top: 50px;
+  padding-top: 100px;
   background-color: #90a4ae;
-  height: 100%;
+  height: 90vh;
 }
 #app-content .under-topbar main {
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 .drawer {
