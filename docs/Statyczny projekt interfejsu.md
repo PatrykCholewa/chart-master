@@ -2,7 +2,7 @@
 
 ## Statyczny projekt interfejsu
 
-![fluxFlow](Statyczny prototyp interfejsu.svg)
+![InterfacePrototype](Statyczny_prototyp_interfejsu.svg)
 
 ## 1. Wstęp
 
