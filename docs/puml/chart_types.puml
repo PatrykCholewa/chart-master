@@ -1,0 +1,18 @@
+@startuml
+
+abstract class Wykres <<(V,red) widok>>
+class WykresSłupkowyPoziomy <<(V,red) widok>>
+class WykresLiniowy <<(V,red) widok>>
+class WykresKołowy <<(V,red) widok>>
+class WykresWarstwowy <<(V,red) widok>>
+class WykresPunktowy <<(V,red) widok>>
+class WykresSłupkowyPionowy <<(V,red) widok>>
+
+WykresWarstwowy -|> Wykres
+Wykres <|- WykresSłupkowyPoziomy
+Wykres <|-- WykresLiniowy
+Wykres <|-- WykresKołowy
+Wykres <|-- WykresPunktowy
+Wykres <|-- WykresSłupkowyPionowy
+
+@enduml

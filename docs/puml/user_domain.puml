@@ -1,0 +1,40 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+ParametryWykresu "1" *-- TypWykresu
+SerieDanych "0..*" o-- SeriaDanych
+SeriaDanych "0..*" o-- Punkt
+
+class ParametryWykresu {
+    + tytuł: string
+    + typ: TypWykresu
+}
+
+enum TypWykresu {
+    PUNKTOWY
+    SŁUPKOWY POZIOMY
+    SŁUPKOWY PIONOWY
+    LINIOWY
+    WARSTWOWY
+    KOŁOWY
+}
+
+class SerieDanych {
+    + dane: Array<SeriaDanych>
+}
+
+class SeriaDanych {
+    + etykieta: string
+    + kolor: string
+    + dane: Array<Punkt>
+}
+
+class Punkt {
+    + x: string
+    + y: string
+    + czy_poprawny: boolean
+    + etykieta: string
+}
+
+@enduml

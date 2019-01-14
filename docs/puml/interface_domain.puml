@@ -1,0 +1,66 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+SzablonOkien <|-- StronaGłówna
+StronaGłówna *-- MenuBoczne
+StronaGłówna *-- PanelGłówny
+MenuBoczne *-- PanelOpcjiGłównych
+MenuBoczne *-- PanelWyboruTypuWykresu
+PanelGłówny *-- Wykres
+Wykres "0..*" o-- Punkt
+Wykres *-- TytułWykresu
+PanelGłówny *-- TabelaDanych
+TabelaDanych "1..*" o-- SeriaDanych
+
+class SzablonOkien << (T,purple) szablon >>{
+    + tytuł_strony: string
+}
+
+class StronaGłówna <<(W,cyan) okno>>
+
+class MenuBoczne <<(V,red) widok>>
+
+class PanelOpcjiGłównych <<(V,red) widok>> {
+    + cofnij()
+    + powtórz()
+    + importuj_csv(e: event)
+    + eksportuj_csv()
+}
+
+class PanelWyboruTypuWykresu <<(V,red) widok>> {
+    + ustaw_typ_wykresu_jako(typ: TypWykresu)
+}
+
+class PanelGłówny <<(V,red) widok>>
+
+class Wykres <<(V,red) widok>> {
+    + typ: TypWykresu
+    + dane: Array<<Punkt>>
+}
+
+class TytułWykresu <<(V,red) widok>> {
+    + tytuł: string
+    + ustaw_tytuł(tytuł: string)
+}
+
+class Punkt {
+    + etykieta: string
+    + ustaw_etykietę(etykieta: string)
+}
+
+class TabelaDanych <<(V,red) widok>> {
+    + dodaj_serię()
+    + dodaj_wiersz_danych()
+}
+
+class SeriaDanych {
+    + dane: Array<string>
+    + etykieta: string
+    + kolor: string
+    + ustaw_współrzędną(wartość: string)
+    + ustaw_kolor(kolor: string)
+    + ustaw_etykietę(etykieta: string)
+}
+
+@enduml
