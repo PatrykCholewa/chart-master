@@ -1,6 +1,4 @@
-# Projekt archtektury
-
-## Statyczny projekt interfejsu
+# Statyczny projekt interfejsu
 
 ![InterfacePrototype](Statyczny_prototyp_interfejsu.svg)
 
