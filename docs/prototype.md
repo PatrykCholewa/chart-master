@@ -1,6 +1,6 @@
 # Statyczny projekt interfejsu
 
-![InterfacePrototype](Statyczny_prototyp_interfejsu.svg)
+![InterfacePrototype](img/prototype.svg)
 
 ## 1. Wstęp
 
@@ -34,5 +34,5 @@ Po lewej stronie interfejsu znajduje się pasek boczny, na którym znajdują si�
 
 ### 2.4 Appbar
 Interfejs wieńczy pasek umieszczony nad pozostałymi elementami. Przedstawia on po lewej jego stronie nazwę aplikacji.
-   
+
 
