@@ -1,0 +1,31 @@
+@startuml
+
+class A as "Action"{
+    type: enum
+    other_props
+}
+
+class R as "Reducer"{
+    reduce(state: State, action: Action): State
+}
+
+class St as "State"
+
+class Sr as "Store" <<(S,orange) singleton>> {
+    getState() : State
+}
+
+class Cn as "Container"
+
+abstract class Cm as "Component"
+
+Cm <|-- Cn
+Cn <- Sr
+Cn <-- St
+Sr *-- St
+Sr "1..*" *-- R
+A -> R
+Cn <--- A
+St -> R
+
+@enduml
