@@ -6,7 +6,7 @@
 
 ![ChartType](screenshots/ChartType.png)  
 
-Aby zmienić typ wykresu należy z wybrać jeden z sześciu przycisków na pasku bocznym. Kliknięcie LPM natychmiastowo zmieni tryb wykresu.
+Aby zmienić typ wykresu należy z wybrać jeden z sześciu przycisków na pasku bocznym. Kliknięcie _LPM_ natychmiastowo zmieni tryb wykresu.
 Dostępne do wyboru są kolejno:
 
 * Wykres słupkowy pionowy
@@ -20,7 +20,7 @@ Dostępne do wyboru są kolejno:
 
 ![ChangeTitle](screenshots/ChangeTitle.png)  
 
-Zmiany tytułu wykresu można dokonać klikając LPM bezpośrednio na tytuł. Uruchomiony zostanie tryb edycji, który pozwala na zmianę tytułu. Zmianę zatwierdza się klikając LPM poza polem tekstowym wprowadzania tytuły wykresu.
+Zmiany tytułu wykresu można dokonać klikając _LPM_ bezpośrednio na tytuł. Uruchomiony zostanie tryb edycji, który pozwala na zmianę tytułu. Zmianę zatwierdza się klikając _LPM_ poza polem tekstowym wprowadzania tytuły wykresu.
 
 ### 1.3 Jak dodać własną strzałkę na wykresie?
 
@@ -36,7 +36,7 @@ W celu dodania własnej strzałki należy kliknąć na dany punkt na wykresie. W
 
 ![Editvalue](screenshots/EditValue.png)  
 
-Aby zmienić współrzędną punktu w tabeli przedstawiającej dane należy dwukrotnie kliknąć LPM na wybraną komórkę z tabeli. Istnieje też możliwość użycia kombinacji _LPM + Enter_. Następnie należy wprowadzić własną wartość i potwierdzić zmianę za pomocą klawisza _Enter_ lub klikając _LPM_ poza komórką.
+Aby zmienić współrzędną punktu w tabeli przedstawiającej dane należy dwukrotnie kliknąć _LPM_ na wybraną komórkę z tabeli. Istnieje też możliwość użycia kombinacji _LPM + Enter_. Następnie należy wprowadzić własną wartość i potwierdzić zmianę za pomocą klawisza _Enter_ lub klikając _LPM_ poza komórką.
 
 ### 2.2 Jak zmienić nazwę zbioru danych?
 
