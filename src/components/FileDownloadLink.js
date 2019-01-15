@@ -31,7 +31,7 @@ class FileDownloadLink extends Component {
         let properties = {type: 'text/plain'};
         let file;
         try {
-            file = new File(data, "csv_download", properties);
+            file = new File(data, "csv_download.csv", properties);
         } catch (e) {
             file = new Blob(data, properties);
         }
@@ -40,7 +40,7 @@ class FileDownloadLink extends Component {
 
     render() {
         return (
-            <a href={this.encodeCSV()} download="csv_file"><Button variant="contained" color="default">Export Data</Button></a>
+            <a href={this.encodeCSV()} download="csv_file.csv"><Button variant="contained" color="default">Export Data</Button></a>
         );
     }
 }
