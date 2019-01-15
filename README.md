@@ -1,3 +1,4 @@
-# chart-master
+# Chart Master
 
-This project was bootstrapped with [Create React Layout](https://github.com/facebook/create-react-app).
+1. [Model aplikacji](docs/model.md)
+3. [Architektura aplikacji](docs/architecture.md)
