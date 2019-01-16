@@ -1,12 +1,4 @@
-# Chart Master
-
-Jest to prosta aplikacja napisana w Reactie do edycji wykresów przy pomocy
-prostego interfejsu. Dane są wprowadzane za pomocą tabelki symulującej
-Excela.
-
-___Zobacz naszą [dokumentację](https://patrykcholewa.github.io/chart-master/)!___
-
-Na skróty:
+# Dokumentacja techniczna
 
 1. [Model aplikacji](https://patrykcholewa.github.io/chart-master/docs/model)
 2. [Statyczny prototyp aplikacji](https://patrykcholewa.github.io/chart-master/docs/prototype)
