@@ -1,5 +1,9 @@
 theme: jekyll-theme-slate
-title: Chart Master
-description: "Prosta, reactowa aplikacja do edycji wykresów"
+
+title       : Chart Master
+local       : "pl-PL"
+name        : Chart Master
+description : "Prosta, reactowa aplikacja do edycji wykresów"
+
 author:
   name             : Patryk Cholewa i Paweł Zych
