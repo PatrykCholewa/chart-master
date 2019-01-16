@@ -8,7 +8,7 @@ ___Zobacz naszą [dokumentację](https://patrykcholewa.github.io/chart-master/)!
 
 Na skróty:
 
-1. [Model aplikacji](https://patrykcholewa.github.io/chart-master/docs/model)
-2. [Statyczny prototyp aplikacji](https://patrykcholewa.github.io/chart-master/docs/prototype)
-3. [Architektura aplikacji](https://patrykcholewa.github.io/chart-master/docs/architecture)
-4. [Instrukcja użytkownika](https://patrykcholewa.github.io/chart-master/docs/user_guide)
+1. [Model aplikacji](https://patrykcholewa.github.io/chart-master/model)
+2. [Statyczny prototyp aplikacji](https://patrykcholewa.github.io/chart-master/prototype)
+3. [Architektura aplikacji](https://patrykcholewa.github.io/chart-master/architecture)
+4. [Instrukcja użytkownika](https://patrykcholewa.github.io/chart-master/user_guide)
