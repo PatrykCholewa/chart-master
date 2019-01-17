@@ -4,6 +4,8 @@ Jest to prosta aplikacja napisana w Reactie do edycji wykresów przy pomocy
 prostego interfejsu. Dane są wprowadzane za pomocą tabelki symulującej
 Excela.
 
+Aplikacja została wykonana w ramach przedmiotu "_Projektowanie Graficznych Interfejsów Użytkownika_" prowadzonego na __Politechnice Warszawskiej__.
+
 ___Zobacz naszą [dokumentację](https://patrykcholewa.github.io/chart-master/)!___
 
 Na skróty:
